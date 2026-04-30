@@ -12,7 +12,7 @@ jobs:
         with:
           dotnet-version: 9.0.x # ou a versão que você utiliza
       - name: Publish
-        run: dotnet publish -c Release -o release --nologo
+        run: dotnet publish HelloBlazor/HelloBlazor.csproj -c Release -o release --nologo
       - name: Commit Files
         run: |
           cd release/wwwroot
