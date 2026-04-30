@@ -20,6 +20,7 @@ jobs:
           cd release/wwwroot
           # Cria um arquivo .nojekyll para o GitHub não ignorar pastas com underline
           touch .nojekyll
+          git config --global init.defaultBranch "main"
           git init
           git add .
           git config user.name "GitHub Actions"
