@@ -1,0 +1,27 @@
+﻿@page "/application/index"
+@using HelloBlazor.Persistence
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@using Radzen.Blazor.Markdown
+@using Radzen.Blazor.Rendering
+@inject HttpClient Http
+@inject UserRepository Repo
+@inject NavigationManager NaviManager
+
+<Header Http="@Http"/>
+
+<div>
+	<ul>
+		<li>Application Item 1</li>
+		<li>Application Item 1</li>
+		<li>Application Item 1</li>
+		<li>Application Item 1</li>
+	</ul>
+</div>
+<Footer Http=@Http PrimaryColor="#4E567E" SecondaryColor="#D2F1E4" />
+
+@code {
+    private User modelUser = new User();
+    public string Name = "";
+    public string ErrorMessage = "";
+    public string strMessage = "";
+}

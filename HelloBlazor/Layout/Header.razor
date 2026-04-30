@@ -1,0 +1,88 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <div class="container">
+        <!-- Logo / Nome -->
+        <a class="navbar-brand fw-bold" href="#home">
+            Aleks Wheeler
+        </a>
+
+        <!-- Botão mobile -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">Sobre</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#portfolio">Projetos</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contato</a>
+                </li>
+
+            </ul>
+
+            <!-- Botão Login -->
+            @* <a class="btn btn-outline-light" href="/login">
+            Login
+        </a> *@
+
+            @* todo: Remover as redes quando implementar o login *@
+            @if (icons is not null && property is not null)
+            {
+                <div style="display: flex; justify-content: center; gap: 2.5rem;">
+                    @if (string.IsNullOrWhiteSpace(property.Email) is false)
+                    {
+                        <a href="mailto:@(property.Email)">
+                            <img src="@icons.Email" alt="email" class="social-icon" />
+                        </a>
+                    }
+                    @if (string.IsNullOrWhiteSpace(property.DevDotTo) is false)
+                    {
+                        <a href="https://dev.to/@(property.DevDotTo)" target="_blank" rel="noopener noreferrer">
+                            <img src="@icons.DevDotTo" alt="Dev.to" class="social-icon" />
+                        </a>
+                    }
+                    @if (string.IsNullOrWhiteSpace(property.GitHub) is false)
+                    {
+                        <a href="https://github.com/@(property.GitHub)" target="_blank" rel="noopener noreferrer">
+                            <img src="@icons.GitHub" alt="GitHub" class="social-icon" />
+                        </a>
+                    }
+                    @if (string.IsNullOrWhiteSpace(property.LinkedIn) is false)
+                    {
+                        <a href="https://linkedin.com/in/@(property.LinkedIn)" target="_blank" rel="noopener noreferrer">
+                            <img src="@icons.LinkedIn" alt="LinkedIn" class="social-icon" />
+                        </a>
+                    }
+                </div>
+            }
+
+        </div>
+    </div>
+
+</nav>
+
+@code {
+    [Parameter, EditorRequired]
+    public required HttpClient Http { get; set; }
+    private SiteProperties? property;
+    private SocialIcons? icons;
+
+    protected override async Task OnInitializedAsync()
+    {
+        property = await Http.GetFromJsonAsync<SiteProperties>("sample-data/siteproperties.json");
+        icons = await Http.GetFromJsonAsync<SocialIcons>("sample-data/socialicons.json");
+    }
+}

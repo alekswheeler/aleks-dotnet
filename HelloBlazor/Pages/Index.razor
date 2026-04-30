@@ -1,0 +1,58 @@
+@page "/"
+@using HelloBlazor.Persistence
+@using Microsoft.EntityFrameworkCore
+
+@inject HttpClient Http
+@inject UserRepository Repo
+@inject HeroImageService HeroImageService
+
+<PageTitle>Portfolio</PageTitle>
+
+<Header Http="@Http"/>
+@* <Home Http=@Http HeroImageService=@HeroImageService /> *@
+<About Http=@Http HeroImageService=@HeroImageService />
+<Portfolio Http=@Http HeroImageService=@HeroImageService />
+<Footer Http=@Http PrimaryColor="#4E567E" SecondaryColor="#D2F1E4" />
+
+@* <p>
+    @if (!string.IsNullOrEmpty(Message))
+    {
+        @Message
+    }
+</p> *@
+
+
+
+@code {
+
+    string Message = "";
+    protected override async Task OnInitializedAsync()
+    {
+        User[] users;
+        User user;
+        try
+        {
+            users = await Repo.GetUser();
+            if (users.Length == 0)
+            {
+                user = new User("Alex", "alex@gmail.com");
+                user.Password = "admin@123";
+                await Repo.AddUser(user);
+                Message = "Primeiro user cadastrado";
+            }
+            else
+            {
+                if (users[users.Length - 1].Name != "Alex")
+                {
+                    user = new User("Alex", "alex@gmail.com", users.Length);
+                    await Repo.AddUser(user);
+                    Message = "outro user";
+                }
+            }
+        }
+        catch (Exception Err)
+        {
+            Message = Err.Message;
+        }
+    }
+}

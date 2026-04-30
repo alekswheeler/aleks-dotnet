@@ -1,0 +1,103 @@
+@page "/login"
+@using HelloBlazor.Persistence
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@using Radzen.Blazor.Markdown
+@using Radzen.Blazor.Rendering
+@inject HttpClient Http
+@inject UserRepository Repo
+@inject NavigationManager NaviManager
+
+<Header Http=@Http />
+
+<div class="container vh-100 d-flex align-items-center justify-content-center">
+    <div class="card shadow-lg" style="max-width: 900px; width: 100%;">
+        <div class="row g-0">
+            <!-- Lado esquerdo -->
+            <div class="col-md-6 bg-primary text-white d-flex flex-column justify-content-center p-5">
+                <h2 class="fw-bold">Bem-vindo!</h2>
+                <p class="mt-3">
+                    Acesse sua conta para continuar utilizando o sistema.
+                </p>
+
+                <p class="small opacity-75 mt-4">
+                    Gerencie suas informações com segurança e rapidez.
+                </p>
+            </div>
+
+            <!-- Lado direito -->
+            <div class="col-md-6 p-5">
+                <h4 class="mb-4">Login</h4>
+
+                <EditForm Model="@modelUser" OnValidSubmit="HandleLogin">
+                    <DataAnnotationsValidator />
+                    <ValidationSummary />
+
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <InputText class="form-control" @bind-Value="modelUser.Email" type="email" />
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label">Senha</label>
+                        <InputText class="form-control" @bind-Value="modelUser.Password" type="password" />
+                    </div>
+                    <button class="btn btn-primary w-100" type="submit">
+                        Entrar
+                    </button>
+                </EditForm>
+            </div>
+
+        </div>
+    </div>
+    @if (string.IsNullOrEmpty(ErrorMessage))
+    {
+        <p>
+            @strMessage
+        </p>
+    }
+    else
+    {
+        <p>
+            @ErrorMessage
+        </p>
+    }
+</div>
+
+<Footer Http=@Http PrimaryColor="#4E567E" SecondaryColor="#D2F1E4" />
+
+@code {
+    private User modelUser = new User();
+    public string Name = "";
+    public string ErrorMessage = "";
+    public string strMessage = "";
+    private async Task HandleLogin()
+    {
+        User[] users;
+        User? objUser = null;
+        try
+        {
+            users = await Repo.GetUser();
+            objUser = users.FirstOrDefault(t => t.Email == modelUser.Email);
+            if(objUser != null) 
+            {
+                if(objUser.Email == "alex@gmail.com" && objUser.Password == "admin@123"){
+                    strMessage = "Logado com Sucesso!";
+                    NaviManager.NavigateTo("/application/index");
+                }
+            }
+            else strMessage = "Invalid username or password";
+        }
+        catch (Exception Err) { ErrorMessage = Err.Message; }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        User[] users;
+        try
+        {
+            users = await Repo.GetUser();
+            if (users.Length > 0) Name = users[0].Name;
+        }
+        catch (Exception Err) { ErrorMessage = Err.Message; }
+    }
+}
