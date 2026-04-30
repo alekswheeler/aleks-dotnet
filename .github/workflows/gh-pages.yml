@@ -1,29 +1,29 @@
-name: Deploy to GitHub Pages
-on:
-  push:
-    branches: [main] # ou master
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      # 1. Instala o .NET SDK
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 9.0.x # ou a versão que você utiliza
-      - name: Publish
-        run: |
-          dotnet workload restore "./HelloBlazor/HelloBlazor.csproj"
-          dotnet publish HelloBlazor/HelloBlazor.csproj -c Release -o release --nologo
-      - name: Commit Files
+          dotnet-version: "9.0.x" # Use a versão do seu projeto
+
+      # 2. Faz o Publish (Build) do Blazor
+      - name: Publish Project
+        run: dotnet publish -c Release -o release
+
+      # 3. Prepara os arquivos específicos para o GitHub Pages
+      - name: Prepare for GH Pages
         run: |
           cd release/wwwroot
           touch .nojekyll
           cp index.html 404.html
-          git init
-          git add .
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git commit -m "Deploy to GitHub Pages"
-          # O segredo está na URL correta e no nome da branch local (main)
-          git push --force "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@://github.com{{ github.repository }}.git" main:gh-pages
+
+      # 4. Faz o Push automático para a branch gh-pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./release/wwwroot
