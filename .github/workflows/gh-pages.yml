@@ -16,7 +16,9 @@ jobs:
 
       # 2. Faz o Publish (Build) do Blazor
       - name: Publish Project
-        run: dotnet publish -c Release -o release
+        run: |
+          dotnet workload restore "./HelloBlazor/HelloBlazor.csproj"
+          dotnet publish HelloBlazor/HelloBlazor.csproj -c Release -o release --nologo
 
       # 3. Prepara os arquivos específicos para o GitHub Pages
       - name: Prepare for GH Pages
