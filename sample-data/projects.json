@@ -1,0 +1,32 @@
+[
+  {
+    "title": "FrameWeb Writer Tool (FWT)",
+    "description": "Domain-specific language for web modeling with automatic Mermaid diagram generation. Built with Langium in VS Code, supporting the FrameWeb methodology. (Undergraduate thesis project - grade 9.5)",
+    "url": "https://github.com/alekswheeler/frameweb-writer-tool"
+  },
+  {
+    "title": "AI Practices & Experiments",
+    "description": "Academic and personal Machine Learning experiments: AutoDiff, Neural Networks, Clustering, and Data Analysis using Jupyter/Colab Notebooks.",
+    "url": "https://github.com/alekswheeler/ai-practices"
+  },
+  {
+    "title": "Vaccine Shell (vsh) - Process & Signal Management",
+    "description": "Interactive shell simulator in C with advanced signal handling (SIGUSR1/SIGUSR2), zombie process management, and foreground/background execution mimicking real OS behavior.",
+    "url": "https://github.com/alekswheeler/Trabalho-de-Sistemas-Operacionais"
+  },
+  {
+    "title": "SQL Transaction Conflict Detector",
+    "description": "PostgreSQL-based system that builds precedence graphs and uses DFS to detect cycles, verifying transaction serializability. Automated with Docker and Makefiles.",
+    "url": "https://github.com/alekswheeler/transactions-sql"
+  },
+  {
+    "title": "Doar Computadores API",
+    "description": "Node.js REST API for managing donations of computers and electronics, handling registration and data storage with Express and TypeScript.",
+    "url": "https://github.com/alekswheeler/doar-computadores"
+  },
+  {
+    "title": "Cash-Me Transfer System",
+    "description": "Backend service for peer-to-peer money transfers with authentication, balance tracking, and PostgreSQL persistence using TypeORM and Docker.",
+    "url": "https://github.com/alekswheeler/cash-me"
+  }
+]

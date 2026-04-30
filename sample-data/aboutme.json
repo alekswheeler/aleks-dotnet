@@ -1,0 +1,13 @@
+{
+  "description": "I'm a C# and .NET developer focused on backend systems and API development. I build scalable applications with authentication, data processing, and clean architecture principles. I also have experience integrating Python-based solutions for automation and data-driven features.",
+  "skills": [
+    "C# / .NET (ASP.NET Core)",
+    "REST APIs & authentication (JWT, OAuth)",
+    "Database design (SQL Server, PostgreSQL)",
+    "Python for automation & data processing",
+    ".NET MAUI (mobile apps)",
+    "Blazor / Razor (web apps)",
+    "Git (version control) & Agile workflows"
+  ],
+  "detailOrQuote": "I believe in understanding systems from the ground up — building from scratch to truly grasp the mechanics. I'm focused on apply solid engineering practices with AI as a force multiplier, always keeping code clean, maintainable, and ready for real-world challenges."
+}
