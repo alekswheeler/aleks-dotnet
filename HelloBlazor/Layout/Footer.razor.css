@@ -6,3 +6,11 @@
   padding: 5rem 0 3rem;
   width: 100vw;
 }
+.link {
+  color: white;
+}
+.link:hover {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
