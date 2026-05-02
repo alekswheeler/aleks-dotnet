@@ -7,6 +7,14 @@
   padding: 5rem 0 3rem;
   width: 100vw;
 }
+.link[b-gi8nzmiryd] {
+  color: white;
+}
+.link:hover[b-gi8nzmiryd] {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
 /* /Layout/Header.razor.rz.scp.css */
 #header[b-pgwcrqrpm9] {
   position: fixed;
