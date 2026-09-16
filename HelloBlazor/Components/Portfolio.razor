@@ -1,31 +1,51 @@
 <section class="light" id="portfolio">
-    <h2>Portfolio</h2>
-    <div class="portfolio-container">
-    @if (projects is null)
-    {
-        <p><em>Loading...</em></p>
-    }
-    else
-    {
-        <div class="portfolio-hero">
-            @if (hero is not null)
-            {
-                <img src="@(hero.Src)" style="height: 90%; width: 100%; object-fit: cover;" 
-                    alt="@(hero.Alt)" />
-            }
-        </div>
-        <div class="container">
-            @foreach (var project in projects)
-            {
-                <div class="box" key="@project.Title">
-                    <a href="@project.Url" target="_blank" rel="noopener noreferrer">
-                        <h3 style="flex-basis: 40px;">@project.Title</h3>
-                    </a>
-                    <p class="small">@project.Description</p>
+    <div class="portfolio-inner">
+        <h2>Portfolio</h2>
+
+        @if (projects is null)
+        {
+            <p><em>Loading...</em></p>
+        }
+        else
+        {
+            <div class="portfolio-hero">
+                @if (hero is not null)
+                {
+                    <img src="@(hero.Src)" alt="@(hero.Alt)" />
+                }
+            </div>
+
+            <div class="portfolio-controls">
+                <input type="text" class="portfolio-search" placeholder="Search projects..."
+                    @bind="searchTerm" @bind:event="oninput" />
+                <div class="portfolio-filters">
+                    <button class="filter-btn @(activeFilter is null ? "active" : "")"
+                        @onclick="() => activeFilter = null">All</button>
+                    @foreach (var category in categories)
+                    {
+                        <button class="filter-btn @(activeFilter == category ? "active" : "")"
+                            @onclick="() => activeFilter = category">@category</button>
+                    }
                 </div>
-            }
-        </div>
-    }
+            </div>
+
+            <div class="projects-grid">
+                @foreach (var project in FilteredProjects)
+                {
+                    <div class="box" key="@project.Title">
+                        <a href="@project.Url" target="_blank" rel="noopener noreferrer">
+                            <h3>@project.Title</h3>
+                        </a>
+                        <p class="small">@project.Description</p>
+                        <span class="category-tag">@project.Category</span>
+                    </div>
+                }
+                @if (FilteredProjects.Count == 0)
+                {
+                    <p class="no-results">No projects found.</p>
+                }
+            </div>
+        }
     </div>
 </section>
 
@@ -38,6 +58,21 @@
 
     private List<Project>? projects;
     private HeroImage? hero;
+    private string searchTerm = "";
+    private string? activeFilter;
+
+    private List<string> categories => projects
+        .Select(p => p.Category)
+        .Distinct()
+        .OrderBy(c => c)
+        .ToList();
+
+    private List<Project> FilteredProjects => projects!
+        .Where(p => activeFilter is null || p.Category == activeFilter)
+        .Where(p => string.IsNullOrWhiteSpace(searchTerm) ||
+            p.Title.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+            p.Description.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+        .ToList();
 
     protected override async Task OnInitializedAsync()
     {
