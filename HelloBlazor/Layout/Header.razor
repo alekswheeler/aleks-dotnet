@@ -16,32 +16,40 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#home">Home</a>
+                    <a class="nav-link" href="#home">@L["Nav_Home"]</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#about">Sobre</a>
+                    <a class="nav-link" href="#about">@L["Nav_About"]</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#portfolio">Projetos</a>
+                    <a class="nav-link" href="#portfolio">@L["Nav_Portfolio"]</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#contact">Contato</a>
+                    <a class="nav-link" href="https://dev.to/alekswheeler" target="_blank" rel="noopener noreferrer">@L["Nav_Blog"]</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">@L["Nav_Contact"]</a>
                 </li>
 
             </ul>
 
+            <div class="header-lang d-flex align-items-center">
+                <CultureSelector />
+            </div>
+
             <!-- Botão Login -->
             @* <a class="btn btn-outline-light" href="/login">
-            Login
+            @L["Nav_Login"]
         </a> *@
 
             @* todo: Remover as redes quando implementar o login *@
             @if (icons is not null && property is not null)
             {
-                <div style="display: flex; justify-content: center; gap: 2.5rem;">
+                <div class="header-social" style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 1rem 1.5rem;">
                     @if (string.IsNullOrWhiteSpace(property.Email) is false)
                     {
                         <a href="mailto:@(property.Email)">
@@ -77,6 +85,10 @@
 @code {
     [Parameter, EditorRequired]
     public required HttpClient Http { get; set; }
+
+    [Inject]
+    public required IStringLocalizer<SharedResource> L { get; set; }
+
     private SiteProperties? property;
     private SocialIcons? icons;
 

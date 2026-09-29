@@ -39,7 +39,6 @@
                 user = new User("Alex", "alex@gmail.com");
                 user.Password = "admin@123";
                 await Repo.AddUser(user);
-                Message = "Primeiro user cadastrado";
             }
             else
             {
@@ -47,7 +46,6 @@
                 {
                     user = new User("Alex", "alex@gmail.com", users.Length);
                     await Repo.AddUser(user);
-                    Message = "outro user";
                 }
             }
         }

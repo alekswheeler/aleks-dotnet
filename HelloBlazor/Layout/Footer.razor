@@ -33,13 +33,16 @@
                 </a>
             }
         </div>
-        <p class="small" style="color: white"><a class=link" target="_blank" href="https://github.com/alekswheeler/aleks-dotnet">Source code </a></p>
+        <p class="small" style="color: white"><a class=link" target="_blank" href="https://github.com/alekswheeler/aleks-dotnet">@L["Footer_SourceCode"]</a></p>
     }
 </div>
 
 @code {
     [Parameter, EditorRequired]
     public required HttpClient Http { get; set; }
+
+    [Inject]
+    public required IStringLocalizer<SharedResource> L { get; set; }
 
     [Parameter]
     public string PrimaryColor { get; set; } = string.Empty;

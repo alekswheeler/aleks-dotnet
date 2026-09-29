@@ -1,0 +1,30 @@
+@inject IJSRuntime JS
+@inject NavigationManager Nav
+@inject IStringLocalizer<SharedResource> L
+
+<span class="d-inline-flex align-items-center gap-2 flex-shrink-0 text-nowrap" title="@L["Language_Label"]">
+    <label for="culture-select" class="text-light small mb-0 text-nowrap">@L["Language_Label"]</label>
+    <select id="culture-select" class="form-select form-select-sm" style="width: auto;" value="@currentCulture" @onchange="OnCultureChanged">
+        <option value="pt-BR">Português</option>
+        <option value="en">English</option>
+    </select>
+</span>
+
+@code {
+    private string currentCulture = CultureInfo.CurrentUICulture.Name.StartsWith("pt", StringComparison.OrdinalIgnoreCase)
+        ? "pt-BR"
+        : "en";
+
+    private async Task OnCultureChanged(ChangeEventArgs e)
+    {
+        var selected = e.Value?.ToString();
+        if (string.IsNullOrWhiteSpace(selected))
+        {
+            return;
+        }
+
+        currentCulture = selected;
+        await JS.InvokeVoidAsync("blazorCulture.set", selected);
+        Nav.NavigateTo(Nav.Uri, forceLoad: true);
+    }
+}

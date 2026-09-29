@@ -3,23 +3,16 @@
     {
         <img class="background" src="@(hero.Src)" alt="@(hero.Alt)" />
     }
-    <h2>About Myself</h2>
+    <h2>@L["About_Title"]</h2>
     <div class="teste" style="background-color: white; padding: 4rem; margin: 3rem auto; text-align: center;">
     @if (aboutMe is null)
     {
-        <p><em>Loading...</em></p>
+        <p><em>@L["Common_Loading"]</em></p>
     }
     else
     {
         <p class="large">@aboutMe.Description</p>
 
-        @* <hr />
-        <ul style="text-align: left; columns: 2; font-size: 1.25rem; margin: 2rem 3rem; gap: 3rem;">
-        @foreach (var skill in aboutMe.Skills)
-        {
-            <li key="@skill">@skill</li>
-        }
-        </ul> *@
         <hr />
         <p>@aboutMe.DetailOrQuote</p>
     }
@@ -33,13 +26,18 @@
     [Parameter, EditorRequired]
     public required HeroImageService HeroImageService { get; set; }
 
+    [Inject]
+    public required IStringLocalizer<SharedResource> L { get; set; }
+
     private AboutMe? aboutMe;
     private HeroImage? hero;
 
     protected override async Task OnInitializedAsync()
     {
-        aboutMe = await Http.GetFromJsonAsync<AboutMe>("sample-data/aboutme.json");
+        var path = CultureInfo.CurrentUICulture.Name.StartsWith("pt", StringComparison.OrdinalIgnoreCase)
+            ? "sample-data/aboutme.pt-BR.json"
+            : "sample-data/aboutme.json";
+        aboutMe = await Http.GetFromJsonAsync<AboutMe>(path);
         hero = await HeroImageService.GetHeroAsync(img => img.Name is "about");
-
     }
 }

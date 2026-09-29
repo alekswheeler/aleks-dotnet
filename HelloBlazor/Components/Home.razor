@@ -6,7 +6,7 @@
     <div style="position: absolute; top: 30%; left: 2rem;">
     @if (property is null)
     {
-        <p><em>Loading...</em></p>
+        <p><em>@L["Common_Loading"]</em></p>
     }
     else
     {
@@ -16,7 +16,7 @@
     </div>
     <div style="position: absolute; bottom: 8rem; left: 50%;">
         <a href="#about" target="_top">
-            <img src="images/down-arrow.svg" style="height: 3rem; width: 3rem;" alt="scroll down" />
+            <img src="images/down-arrow.svg" style="height: 3rem; width: 3rem;" alt="@L["Home_ScrollDown"]" />
         </a>
     </div>
 </section>
@@ -27,6 +27,9 @@
 
     [Parameter, EditorRequired]
     public required HeroImageService HeroImageService { get; set; }
+
+    [Inject]
+    public required IStringLocalizer<SharedResource> L { get; set; }
 
     private SiteProperties? property;
     private HeroImage? hero;

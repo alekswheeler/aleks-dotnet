@@ -1,0 +1,38 @@
+[
+  {
+    "title": "FrameWeb Writer Tool (FWT)",
+    "description": "Linguagem de domínio específico para modelagem web com geração automática de diagramas Mermaid. Construída com Langium no VS Code, seguindo a metodologia FrameWeb. (Trabalho de conclusão de curso - nota 9,5)",
+    "url": "https://github.com/alekswheeler/frameweb-writer-tool",
+    "category": "Languages"
+  },
+  {
+    "title": "AI Practices & Experiments",
+    "description": "Experimentos acadêmicos e pessoais de Machine Learning: AutoDiff, Redes Neurais, Agrupamento e Análise de Dados usando Jupyter/Colab Notebooks.",
+    "url": "https://github.com/alekswheeler/ai-practices",
+    "category": "Machine Learning"
+  },
+  {
+    "title": "Vaccine Shell (vsh) - Process & Signal Management",
+    "description": "Simulador de shell interativo em C com tratamento avançado de sinais (SIGUSR1/SIGUSR2), gerenciamento de processos zumbis e execução em primeiro/segundo plano simulando o comportamento real do SO.",
+    "url": "https://github.com/alekswheeler/Trabalho-de-Sistemas-Operacionais",
+    "category": "Systems"
+  },
+  {
+    "title": "SQL Transaction Conflict Detector",
+    "description": "Sistema baseado em PostgreSQL que constrói grafos de precedência e usa DFS para detectar ciclos, verificando a serializabilidade das transações. Automatizado com Docker e Makefiles.",
+    "url": "https://github.com/alekswheeler/transactions-sql",
+    "category": "Databases"
+  },
+  {
+    "title": "Doar Computadores API",
+    "description": "API REST em Node.js para gerenciar doações de computadores e eletrônicos, cuidando de cadastro e armazenamento de dados com Express e TypeScript.",
+    "url": "https://github.com/alekswheeler/doar-computadores",
+    "category": "Backend"
+  },
+  {
+    "title": "Cash-Me Transfer System",
+    "description": "Serviço backend para transferências de valores entre usuários com autenticação, controle de saldo e persistência em PostgreSQL usando TypeORM e Docker.",
+    "url": "https://github.com/alekswheeler/cash-me",
+    "category": "Backend"
+  }
+]

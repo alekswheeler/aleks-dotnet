@@ -1,10 +1,10 @@
 <section class="light" id="portfolio">
     <div class="portfolio-inner">
-        <h2>Portfolio</h2>
+        <h2>@L["Portfolio_Title"]</h2>
 
         @if (projects is null)
         {
-            <p><em>Loading...</em></p>
+            <p><em>@L["Common_Loading"]</em></p>
         }
         else
         {
@@ -16,11 +16,11 @@
             </div>
 
             <div class="portfolio-controls">
-                <input type="text" class="portfolio-search" placeholder="Search projects..."
+                <input type="text" class="portfolio-search" placeholder="@L["Portfolio_Search"]"
                     @bind="searchTerm" @bind:event="oninput" />
                 <div class="portfolio-filters">
                     <button class="filter-btn @(activeFilter is null ? "active" : "")"
-                        @onclick="() => activeFilter = null">All</button>
+                        @onclick="() => activeFilter = null">@L["Portfolio_All"]</button>
                     @foreach (var category in categories)
                     {
                         <button class="filter-btn @(activeFilter == category ? "active" : "")"
@@ -42,7 +42,7 @@
                 }
                 @if (FilteredProjects.Count == 0)
                 {
-                    <p class="no-results">No projects found.</p>
+                    <p class="no-results">@L["Portfolio_NoResults"]</p>
                 }
             </div>
         }
@@ -55,6 +55,9 @@
 
     [Parameter, EditorRequired]
     public required HeroImageService HeroImageService { get; set; }
+
+    [Inject]
+    public required IStringLocalizer<SharedResource> L { get; set; }
 
     private List<Project>? projects;
     private HeroImage? hero;
@@ -76,7 +79,10 @@
 
     protected override async Task OnInitializedAsync()
     {
-        projects = await Http.GetFromJsonAsync<List<Project>>("sample-data/projects.json");
+        var path = CultureInfo.CurrentUICulture.Name.StartsWith("pt", StringComparison.OrdinalIgnoreCase)
+            ? "sample-data/projects.pt-BR.json"
+            : "sample-data/projects.json";
+        projects = await Http.GetFromJsonAsync<List<Project>>(path);
         hero = await HeroImageService.GetHeroAsync(img => img.Name is "portfolio");
     }
 }

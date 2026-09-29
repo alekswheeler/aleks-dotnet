@@ -11,6 +11,35 @@ body {
   height: 100%;
   width: 100%;
   font-family: "Montserrat", sans-serif;
+  overflow-x: hidden; /* fallback */
+  overflow-x: clip; /* sem barra horizontal, sem quebrar sticky */
+}
+
+/* Barra de rolagem vertical customizada (Firefox) */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #4e567e rgba(0, 0, 0, 0.08);
+}
+
+/* Barra de rolagem vertical customizada (Chrome/Edge/Safari) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #4e567e 0%, #7c86b8 100%);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3a4060;
+  background-clip: content-box;
 }
 
 div#main {
@@ -35,13 +64,12 @@ section.light {
 }
 
 section img.background {
-  width: 100vmax;
+  width: 100%;
   height: 100%;
   z-index: -1;
   position: absolute;
   top: 0;
-  left: 50%;
-  transform: translate(-50%, 0);
+  left: 0;
   pointer-events: none;
   object-fit: cover;
 }

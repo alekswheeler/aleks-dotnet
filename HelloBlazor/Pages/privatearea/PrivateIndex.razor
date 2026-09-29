@@ -5,16 +5,18 @@
 @inject HttpClient Http
 @inject UserRepository Repo
 @inject NavigationManager NaviManager
+@inject IStringLocalizer<SharedResource> L
 
 <Header Http="@Http"/>
 
-<div>
-	<ul>
-		<li>Application Item 1</li>
-		<li>Application Item 1</li>
-		<li>Application Item 1</li>
-		<li>Application Item 1</li>
-	</ul>
+<div class="container py-4">
+    <h2>@L["Private_Title"]</h2>
+    <ul>
+        @for (var i = 1; i <= 4; i++)
+        {
+            <li>@string.Format(L["Private_Item"], i)</li>
+        }
+    </ul>
 </div>
 <Footer Http=@Http PrimaryColor="#4E567E" SecondaryColor="#D2F1E4" />
 
