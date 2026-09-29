@@ -1,0 +1,13 @@
+{
+  "description": "Sou desenvolvedor C# e .NET com foco em sistemas backend e desenvolvimento de APIs. Construo aplicações escaláveis com autenticação, processamento de dados e princípios de arquitetura limpa. Também tenho experiência integrando soluções em Python para automação e recursos orientados a dados.",
+  "skills": [
+    "C# / .NET (ASP.NET Core)",
+    "APIs REST e autenticação (JWT, OAuth)",
+    "Modelagem de banco de dados (SQL Server, PostgreSQL)",
+    "Python para automação e processamento de dados",
+    ".NET MAUI (aplicativos mobile)",
+    "Blazor / Razor (aplicações web)",
+    "Git (controle de versão) e fluxos Ágeis"
+  ],
+  "detailOrQuote": "Acredito em entender os sistemas desde a base — construindo do zero para realmente compreender os mecanismos. Tenho foco em aplicar boas práticas de engenharia com IA como multiplicador de força, mantendo o código sempre limpo, manutenível e pronto para desafios reais."
+}

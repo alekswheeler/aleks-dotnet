@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "HelloBlazor",
   "resources": {
-    "hash": "sha256-Zi600jxnVhVHE4MUqZ3aDB2TL2Ah4p3b/LfdHU5YS3o=",
+    "hash": "sha256-Fb0D9MzTtRjEBfZaP7S2mp4YaLjY72I7fZdQZBqFnn8=",
     "fingerprinting": {
       "Microsoft.AspNetCore.Components.78n2jc9add.wasm": "Microsoft.AspNetCore.Components.wasm",
       "Microsoft.AspNetCore.Components.Forms.efwzbrxbfh.wasm": "Microsoft.AspNetCore.Components.Forms.wasm",
@@ -21,8 +21,10 @@
       "Microsoft.Extensions.Configuration.Abstractions.02n5u2e0td.wasm": "Microsoft.Extensions.Configuration.Abstractions.wasm",
       "Microsoft.Extensions.Configuration.Json.dmhhu1g5m8.wasm": "Microsoft.Extensions.Configuration.Json.wasm",
       "Microsoft.Extensions.DependencyInjection.sgx4v85dm6.wasm": "Microsoft.Extensions.DependencyInjection.wasm",
-      "Microsoft.Extensions.DependencyInjection.Abstractions.9o5bh88fkk.wasm": "Microsoft.Extensions.DependencyInjection.Abstractions.wasm",
+      "Microsoft.Extensions.DependencyInjection.Abstractions.3m4kbscokm.wasm": "Microsoft.Extensions.DependencyInjection.Abstractions.wasm",
       "Microsoft.Extensions.DependencyModel.j2ienabon1.wasm": "Microsoft.Extensions.DependencyModel.wasm",
+      "Microsoft.Extensions.Localization.wpx97ph4rv.wasm": "Microsoft.Extensions.Localization.wasm",
+      "Microsoft.Extensions.Localization.Abstractions.ic4uj8pael.wasm": "Microsoft.Extensions.Localization.Abstractions.wasm",
       "Microsoft.Extensions.Logging.5hirozpxve.wasm": "Microsoft.Extensions.Logging.wasm",
       "Microsoft.Extensions.Logging.Abstractions.b8tjrvq14z.wasm": "Microsoft.Extensions.Logging.Abstractions.wasm",
       "Microsoft.Extensions.Options.nlhft6d7y6.wasm": "Microsoft.Extensions.Options.wasm",
@@ -30,7 +32,7 @@
       "Microsoft.JSInterop.ojecu8yvwo.wasm": "Microsoft.JSInterop.wasm",
       "Microsoft.JSInterop.WebAssembly.ck2n8tx5vz.wasm": "Microsoft.JSInterop.WebAssembly.wasm",
       "Microsoft.SqlServer.Server.yamodpu5qp.wasm": "Microsoft.SqlServer.Server.wasm",
-      "Radzen.Blazor.509xy4fdvk.wasm": "Radzen.Blazor.wasm",
+      "Radzen.Blazor.xdh1v4wb4p.wasm": "Radzen.Blazor.wasm",
       "SQLitePCLRaw.batteries_v2.vh9uet5yp4.wasm": "SQLitePCLRaw.batteries_v2.wasm",
       "SQLitePCLRaw.core.xkz8xl2v4t.wasm": "SQLitePCLRaw.core.wasm",
       "SQLitePCLRaw.provider.e_sqlite3.cidb3ql7by.wasm": "SQLitePCLRaw.provider.e_sqlite3.wasm",
@@ -70,7 +72,7 @@
       "System.Net.WebClient.obst4dx9ug.wasm": "System.Net.WebClient.wasm",
       "System.ObjectModel.paoajlt779.wasm": "System.ObjectModel.wasm",
       "System.Private.Uri.bnb2poe3xn.wasm": "System.Private.Uri.wasm",
-      "System.Private.Xml.Linq.basstpm1a4.wasm": "System.Private.Xml.Linq.wasm",
+      "System.Private.Xml.Linq.k1r1hg1ams.wasm": "System.Private.Xml.Linq.wasm",
       "System.Private.Xml.p8uorv3exc.wasm": "System.Private.Xml.wasm",
       "System.Reflection.Emit.ILGeneration.r26q7hykrk.wasm": "System.Reflection.Emit.ILGeneration.wasm",
       "System.Reflection.Emit.uma8kdb1s3.wasm": "System.Reflection.Emit.wasm",
@@ -81,7 +83,7 @@
       "System.Runtime.Numerics.wtgeahz5tt.wasm": "System.Runtime.Numerics.wasm",
       "System.Runtime.Serialization.Formatters.k05wobffna.wasm": "System.Runtime.Serialization.Formatters.wasm",
       "System.Runtime.Serialization.Primitives.25ywvvs27o.wasm": "System.Runtime.Serialization.Primitives.wasm",
-      "System.Runtime.ny6xrfykb1.wasm": "System.Runtime.wasm",
+      "System.Runtime.qhvn705z97.wasm": "System.Runtime.wasm",
       "System.Security.Cryptography.vl5okzb3k0.wasm": "System.Security.Cryptography.wasm",
       "System.Text.Encoding.Extensions.k7lpluvpw4.wasm": "System.Text.Encoding.Extensions.wasm",
       "System.Text.Encodings.Web.2p59f8lok6.wasm": "System.Text.Encodings.Web.wasm",
@@ -97,29 +99,28 @@
       "System.Xml.XmlSerializer.7pop8p6a28.wasm": "System.Xml.XmlSerializer.wasm",
       "System.p0vf5aoex5.wasm": "System.wasm",
       "netstandard.870jsqiqo0.wasm": "netstandard.wasm",
-      "System.Private.CoreLib.qlf4456p0q.wasm": "System.Private.CoreLib.wasm",
-      "HelloBlazor.7m9s5vm1dz.wasm": "HelloBlazor.wasm",
+      "System.Private.CoreLib.ykqh5c6wmy.wasm": "System.Private.CoreLib.wasm",
+      "HelloBlazor.dju2ajf5hf.wasm": "HelloBlazor.wasm",
       "dotnet.native.ys8ienpobq.js": "dotnet.native.js",
-      "dotnet.native.a1is6hzvv5.wasm": "dotnet.native.wasm",
+      "dotnet.native.qf02m1j61u.wasm": "dotnet.native.wasm",
       "dotnet.js": "dotnet.js",
       "dotnet.runtime.8ha609180a.js": "dotnet.runtime.js",
-      "icudt_CJK.tjcz0u77k5.dat": "icudt_CJK.dat",
-      "icudt_EFIGS.tptq2av103.dat": "icudt_EFIGS.dat",
-      "icudt_no_CJK.lfu7j35m59.dat": "icudt_no_CJK.dat",
+      "icudt.oh1zvcfom8.dat": "icudt.dat",
       "Microsoft.Data.SqlClient.resources.phf2tgm6yr.wasm": "Microsoft.Data.SqlClient.resources.wasm",
       "Microsoft.Data.SqlClient.resources.d0u2up52oc.wasm": "Microsoft.Data.SqlClient.resources.wasm",
-      "Radzen.Blazor.resources.lec1voob6a.wasm": "Radzen.Blazor.resources.wasm",
+      "Radzen.Blazor.resources.w0lg7a1muv.wasm": "Radzen.Blazor.resources.wasm",
       "Microsoft.Data.SqlClient.resources.8tf6w99nyl.wasm": "Microsoft.Data.SqlClient.resources.wasm",
-      "Radzen.Blazor.resources.0778ml8kkz.wasm": "Radzen.Blazor.resources.wasm",
+      "Radzen.Blazor.resources.6v6woztey5.wasm": "Radzen.Blazor.resources.wasm",
       "Microsoft.Data.SqlClient.resources.lz1p4q3tey.wasm": "Microsoft.Data.SqlClient.resources.wasm",
-      "Radzen.Blazor.resources.idrzhsrr92.wasm": "Radzen.Blazor.resources.wasm",
+      "Radzen.Blazor.resources.1vmlkjidxo.wasm": "Radzen.Blazor.resources.wasm",
       "Microsoft.Data.SqlClient.resources.95pwy43jtj.wasm": "Microsoft.Data.SqlClient.resources.wasm",
-      "Radzen.Blazor.resources.0kimt6lelf.wasm": "Radzen.Blazor.resources.wasm",
+      "Radzen.Blazor.resources.swxjtby6f5.wasm": "Radzen.Blazor.resources.wasm",
       "Microsoft.Data.SqlClient.resources.t0bztm3svb.wasm": "Microsoft.Data.SqlClient.resources.wasm",
-      "Radzen.Blazor.resources.mqq65ph7oj.wasm": "Radzen.Blazor.resources.wasm",
+      "Radzen.Blazor.resources.lc2bnigcf9.wasm": "Radzen.Blazor.resources.wasm",
       "Microsoft.Data.SqlClient.resources.hn0zy4170c.wasm": "Microsoft.Data.SqlClient.resources.wasm",
       "Microsoft.Data.SqlClient.resources.9tayjivza4.wasm": "Microsoft.Data.SqlClient.resources.wasm",
       "Microsoft.Data.SqlClient.resources.ops7ka24he.wasm": "Microsoft.Data.SqlClient.resources.wasm",
+      "HelloBlazor.resources.in87fx5oqn.wasm": "HelloBlazor.resources.wasm",
       "Microsoft.Data.SqlClient.resources.ewbcr49ghg.wasm": "Microsoft.Data.SqlClient.resources.wasm",
       "Microsoft.Data.SqlClient.resources.iniwjimop6.wasm": "Microsoft.Data.SqlClient.resources.wasm",
       "Microsoft.Data.SqlClient.resources.ktxi7oefxs.wasm": "Microsoft.Data.SqlClient.resources.wasm",
@@ -132,16 +133,14 @@
       "dotnet.runtime.8ha609180a.js": "sha256-dLGiRHXW5dihGFbVNpFTz1UieVuaSP9FlFdtk0cxQFo="
     },
     "wasmNative": {
-      "dotnet.native.a1is6hzvv5.wasm": "sha256-shsBa88wkvK7wh3PrIminsCr8G24ky4yYHDM2keXvec="
+      "dotnet.native.qf02m1j61u.wasm": "sha256-tpjs/yaeAuBpYPAfMRVMeYYD5LeRlg7jz4eGx7cvLwE="
     },
     "icu": {
-      "icudt_CJK.tjcz0u77k5.dat": "sha256-SZLtQnRc0JkwqHab0VUVP7T3uBPSeYzxzDnpxPpUnHk=",
-      "icudt_EFIGS.tptq2av103.dat": "sha256-8fItetYY8kQ0ww6oxwTLiT3oXlBwHKumbeP2pRF4yTc=",
-      "icudt_no_CJK.lfu7j35m59.dat": "sha256-L7sV7NEYP37/Qr2FPCePo5cJqRgTXRwGHuwF5Q+0Nfs="
+      "icudt.oh1zvcfom8.dat": "sha256-tO5O5YzMTVSaKBboxAqezOQL9ewmupzV2JrB5Rkc8a4="
     },
     "coreAssembly": {
       "System.Runtime.InteropServices.JavaScript.4a4pqv0cl2.wasm": "sha256-7BdeaoxeVjML3qu8PKxhxtbnbEVIVAMLWbp/MG8oOLg=",
-      "System.Private.CoreLib.qlf4456p0q.wasm": "sha256-/n+1ZLkcRW5b6JJrhN2Aq5IpxB/MM1b4OTajBbBwQgs="
+      "System.Private.CoreLib.ykqh5c6wmy.wasm": "sha256-LioTs4F3leX5SQsGhsW83WaEieb/g8Wj4JGtYe7vwlY="
     },
     "assembly": {
       "Microsoft.AspNetCore.Components.78n2jc9add.wasm": "sha256-F5UfKZqlbGR531CbV6hdfvMANj6IH/8qb8Yq7koNEw4=",
@@ -162,8 +161,10 @@
       "Microsoft.Extensions.Configuration.Abstractions.02n5u2e0td.wasm": "sha256-CPah3oLnPBuMuZEu202tSd5fbAmUG7BdMWifQ7dHxFo=",
       "Microsoft.Extensions.Configuration.Json.dmhhu1g5m8.wasm": "sha256-i8q5/psvVa6UWC6mOnOAcc+djJgAlNS1V2vaHeNsyOc=",
       "Microsoft.Extensions.DependencyInjection.sgx4v85dm6.wasm": "sha256-lE7KoSBO9j+xlvgakEv21WfwIHMK3KXZHh/U58lmyY0=",
-      "Microsoft.Extensions.DependencyInjection.Abstractions.9o5bh88fkk.wasm": "sha256-eQITbl2kQfErf7YCn4XSGb9NiDF5Nc25bOQcuLNgMS8=",
+      "Microsoft.Extensions.DependencyInjection.Abstractions.3m4kbscokm.wasm": "sha256-W+/YbV3cav9CQ244DT+hhZRWGl7+SKB00CDH+fxTqcI=",
       "Microsoft.Extensions.DependencyModel.j2ienabon1.wasm": "sha256-++HIo1y+pQM+JVBz1gF6dbXlorN4GKB6oyFDQ9BLevc=",
+      "Microsoft.Extensions.Localization.wpx97ph4rv.wasm": "sha256-9I0ENMyHPldylhgMrTenqZe4mSlpIO1njTTYXXe4cac=",
+      "Microsoft.Extensions.Localization.Abstractions.ic4uj8pael.wasm": "sha256-gpRKYXpJ6QwabsyGhMXQne39p9ANtmsqBCG0nqtLUJw=",
       "Microsoft.Extensions.Logging.5hirozpxve.wasm": "sha256-SeqUVNaSSftXXbPoMei48BL6e1HZvq9oILGG9kqERMg=",
       "Microsoft.Extensions.Logging.Abstractions.b8tjrvq14z.wasm": "sha256-RS7uEaBt9gWBjR17BMLXQF5UJnhCi/mRLmUVnRW3f5M=",
       "Microsoft.Extensions.Options.nlhft6d7y6.wasm": "sha256-26vzks05zE50kb8g6Gn0G/RtY8wdatG7dKZddLG1J5I=",
@@ -171,7 +172,7 @@
       "Microsoft.JSInterop.ojecu8yvwo.wasm": "sha256-XE0XYYcvc7XabFssQIL4aje+H50HZUzYv/J31i5VnEs=",
       "Microsoft.JSInterop.WebAssembly.ck2n8tx5vz.wasm": "sha256-RKfavH34tK/SxIl5l5Vk2OCgDk0daQnWmnsCUws+2eU=",
       "Microsoft.SqlServer.Server.yamodpu5qp.wasm": "sha256-Fig+5hq00gGQlXAgSnyFlUlWyhlx9f+yPJb4INt3gNc=",
-      "Radzen.Blazor.509xy4fdvk.wasm": "sha256-1c1jZnINnFZeap6B/qtKK/dXn2w2driRFhc/TffAwvY=",
+      "Radzen.Blazor.xdh1v4wb4p.wasm": "sha256-uyJTDkJPVvCy2KtHfce1PvcXwghtNSmlg6jNLNaTbeA=",
       "SQLitePCLRaw.batteries_v2.vh9uet5yp4.wasm": "sha256-bUL22xPcTDXGgCAJmi59APb3Vn5OsBBoX0rPDSfHcTI=",
       "SQLitePCLRaw.core.xkz8xl2v4t.wasm": "sha256-34SMrsayL0bhoZ4JGGWjN0gYAqZotemwzF8evivgz8Q=",
       "SQLitePCLRaw.provider.e_sqlite3.cidb3ql7by.wasm": "sha256-3EuT9kGxKjK50Qkss/AuRYuEc5IbUEhy3mC1Zid492w=",
@@ -211,7 +212,7 @@
       "System.Net.WebClient.obst4dx9ug.wasm": "sha256-pFxlaGgDL+FyzpIsis/8K6exUxnSdJ0bcTgI1+zoBSA=",
       "System.ObjectModel.paoajlt779.wasm": "sha256-gZCBScMDIdoiVynLmZxISFKuMYVI3zG0ZEdIojTsQsI=",
       "System.Private.Uri.bnb2poe3xn.wasm": "sha256-iZ+j2WjrhyeILGFjrT8E1lLSWPnonx2Pel0RhvWX0uo=",
-      "System.Private.Xml.Linq.basstpm1a4.wasm": "sha256-M1+JnislBvB17TjdHGUbJpe6614bpsgww0GsgZ6iHfA=",
+      "System.Private.Xml.Linq.k1r1hg1ams.wasm": "sha256-2D8txS8mVhjJt1p2lIR1Rzm2/E/re4iyDyw+2PYkp0E=",
       "System.Private.Xml.p8uorv3exc.wasm": "sha256-GTY1GAPPHIN8lz8B+s4fx5dQV4AU7KSYGNJ/4JY6ZL8=",
       "System.Reflection.Emit.ILGeneration.r26q7hykrk.wasm": "sha256-vfPMvxEqPRbNqdrGIypRG5bwBV+Z5gflumLFnIRtk/E=",
       "System.Reflection.Emit.uma8kdb1s3.wasm": "sha256-1r88FYifB9l4O5UaHhyFg+NFO+pkC/Nm6S4Lkqrl+Ig=",
@@ -221,7 +222,7 @@
       "System.Runtime.Numerics.wtgeahz5tt.wasm": "sha256-TBV5u3mMQYG6ueC50I/VSshsIN97+Bkev6+Q2AbaZec=",
       "System.Runtime.Serialization.Formatters.k05wobffna.wasm": "sha256-ZLUJypn6DkklOTR41+PlCpJHEXIAYqrOK5/xdnQn2LQ=",
       "System.Runtime.Serialization.Primitives.25ywvvs27o.wasm": "sha256-1g9FSdIIbbNJqp4QjiFRJgdcu7A/v/yXhsEA+vPD/0Y=",
-      "System.Runtime.ny6xrfykb1.wasm": "sha256-f1in/LQOJZtlyrXhVETOXDcpKYOg92NSby2jAVmtlts=",
+      "System.Runtime.qhvn705z97.wasm": "sha256-LnZ3YScctHxtOfM0D4R+q46xqr+5q+igZ4Mi0flnPx4=",
       "System.Security.Cryptography.vl5okzb3k0.wasm": "sha256-Y6IqIjZigA45pkSZ4VKht9WoUhnJCZjXGxIBo/Wdh4c=",
       "System.Text.Encoding.Extensions.k7lpluvpw4.wasm": "sha256-YCsNkrHs956whTnP7VcCX1WJudwEpSfgBahOB2tpt3A=",
       "System.Text.Encodings.Web.2p59f8lok6.wasm": "sha256-6pvlbC4IXcOqPGUaeiERDpN7lyV2ffsQoth4KVrwBBM=",
@@ -237,7 +238,7 @@
       "System.Xml.XmlSerializer.7pop8p6a28.wasm": "sha256-SzX04Ls5ZfclVEL5sJukbvCE5BEAjxPiq7rg5fZ1Pr8=",
       "System.p0vf5aoex5.wasm": "sha256-Nyi0mcDiCrrs35AL7vjBFsnr50PVmlZc0YGTCXg0h18=",
       "netstandard.870jsqiqo0.wasm": "sha256-xGtZZyV8ecNEMsd7xwCzsbuwPzTJQ30tUISaM6PGxzg=",
-      "HelloBlazor.7m9s5vm1dz.wasm": "sha256-UT/v7b34kg/SASgC3iMv/rBQxhp1jUiA2FALL5ULIIs="
+      "HelloBlazor.dju2ajf5hf.wasm": "sha256-51INTLiggHDiZx2SqVPpRsusdSRrXn37UwEO61lTdbI="
     },
     "satelliteResources": {
       "cs": {
@@ -245,23 +246,23 @@
       },
       "de": {
         "Microsoft.Data.SqlClient.resources.d0u2up52oc.wasm": "sha256-k0mTuvlnVOW9uBfiqFuK9YsSVao3IqS1JexODV2eFro=",
-        "Radzen.Blazor.resources.lec1voob6a.wasm": "sha256-8+vgTRzOKCrrXT/4ugOgTbIzCUE+qIsosBbPtTksEUU="
+        "Radzen.Blazor.resources.w0lg7a1muv.wasm": "sha256-kNJzWm+PZsP7Qymk6TQdtPbBBTldhAJCJjjqGmgQ31o="
       },
       "es": {
         "Microsoft.Data.SqlClient.resources.8tf6w99nyl.wasm": "sha256-jMmtuBnqwlRsd7TJRKVZX6ozJiEGY+3rRGNpHxtq270=",
-        "Radzen.Blazor.resources.0778ml8kkz.wasm": "sha256-lF8xFdKxcKmgh7uuiS5rgV2KGwdasEsCyAm/ONgoeLU="
+        "Radzen.Blazor.resources.6v6woztey5.wasm": "sha256-wr5kZCbIELZp17l8+VZvr6MRxJNmaoEi9yhzdFaJl8Q="
       },
       "fr": {
         "Microsoft.Data.SqlClient.resources.lz1p4q3tey.wasm": "sha256-r43S55+lD02+PgmzYqUGYXDpyaZDwfVVLzYWne+Eiy0=",
-        "Radzen.Blazor.resources.idrzhsrr92.wasm": "sha256-VoZfGk4ZNjN4QEnpMBaqvg9hX/y8h9r/ZXbO19+e2jU="
+        "Radzen.Blazor.resources.1vmlkjidxo.wasm": "sha256-/YYz0Ka6dEtRqVw4jS1Qt+fhfkYJVrrZpajjgWKUbiQ="
       },
       "it": {
         "Microsoft.Data.SqlClient.resources.95pwy43jtj.wasm": "sha256-TSn+yr2U4Y1GadmFdiDd15jAPENaBCeZjO/ZipzZxv8=",
-        "Radzen.Blazor.resources.0kimt6lelf.wasm": "sha256-kBPUzISmorWMYAmlI71X+NxTondhOcdUVMGj6eKyJGQ="
+        "Radzen.Blazor.resources.swxjtby6f5.wasm": "sha256-bBtDsvohM8c5t2IR/EhJif0oy3+DnPTs9ld0QvYeUCg="
       },
       "ja": {
         "Microsoft.Data.SqlClient.resources.t0bztm3svb.wasm": "sha256-jaexDpwQJJsHHo+QdqkinLYBLfTRX/giNPNCJBK9My8=",
-        "Radzen.Blazor.resources.mqq65ph7oj.wasm": "sha256-3sUW538HwWcwvNs8V9VbceGlomxXfz4eWiWq7PfpeaA="
+        "Radzen.Blazor.resources.lc2bnigcf9.wasm": "sha256-WyDc8A4wZNX2k/tr+6eYVRW+3aQCx9gGSK1RtKKuPdY="
       },
       "ko": {
         "Microsoft.Data.SqlClient.resources.hn0zy4170c.wasm": "sha256-DbBdPxXGQ5V61SfRCPm8OYm3BS1rBhPYsZefbBGTpw8="
@@ -270,7 +271,8 @@
         "Microsoft.Data.SqlClient.resources.9tayjivza4.wasm": "sha256-w2mBjEWYjG+LOfCFZogLDJ7iXJ6alj9s/iSUQ13qGxo="
       },
       "pt-BR": {
-        "Microsoft.Data.SqlClient.resources.ops7ka24he.wasm": "sha256-HKkgGBpKQbd9gEmvMeDFQBGfy8Hz8f7UVTNyn/vUJSc="
+        "Microsoft.Data.SqlClient.resources.ops7ka24he.wasm": "sha256-HKkgGBpKQbd9gEmvMeDFQBGfy8Hz8f7UVTNyn/vUJSc=",
+        "HelloBlazor.resources.in87fx5oqn.wasm": "sha256-cvXzvrXQ/Xi1iinZsmRPjnpMUVapsI0K3qAD+oHwtVs="
       },
       "ru": {
         "Microsoft.Data.SqlClient.resources.ewbcr49ghg.wasm": "sha256-PuIjkJh2Sr5+ut5i9RTr0lP44YKTw51d+JJLWUUtotE="
@@ -289,7 +291,7 @@
   "cacheBootResources": true,
   "debugLevel": 0,
   "linkerEnabled": true,
-  "globalizationMode": "sharded",
+  "globalizationMode": "all",
   "extensions": {
     "blazor": {}
   }
