@@ -1,0 +1,186 @@
+@page "/pokedex"
+@inject HttpClient Http
+@inject IStringLocalizer<SharedResource> L
+
+<PageTitle>@L["Pokedex_Title"]</PageTitle>
+
+<Header Http="@Http" />
+
+<section class="pk-hero">
+    <div class="pk-hero-inner">
+        <span class="pk-badge">@L["Pokedex_Badge"]</span>
+        <h1>@L["Pokedex_Title"]</h1>
+        <p class="pk-sub">@L["Pokedex_Subtitle"]</p>
+        <div class="pk-cta-row">
+            <a class="pk-btn pk-btn-primary" href="@RepoUrl" target="_blank" rel="noopener noreferrer">
+                @L["Pokedex_CtaRepo"]
+            </a>
+            <a class="pk-btn pk-btn-ghost" href="#pk-how">
+                @L["Pokedex_CtaDemo"]
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="light" id="pk-diff">
+    <div class="pk-section">
+        <h2>@L["Pokedex_DiffTitle"]</h2>
+        <p class="pk-lead">@L["Pokedex_DiffText"]</p>
+        <div class="pk-grid">
+            @foreach (var card in DiffCards)
+            {
+                <div class="box pk-card">
+                    <h3>@L[card.Title]</h3>
+                    <p class="small">@L[card.Text]</p>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="pk-how" id="pk-how">
+    <div class="pk-section">
+        <h2>@L["Pokedex_HowTitle"]</h2>
+        <div class="pk-steps">
+            @for (var i = 0; i < Steps.Length; i++)
+            {
+                <div class="pk-step">
+                    <span class="pk-step-num">@(i + 1)</span>
+                    <h3>@L[Steps[i].Title]</h3>
+                    <p class="small">@L[Steps[i].Text]</p>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="light" id="pk-arch">
+    <div class="pk-section">
+        <h2>@L["Pokedex_ArchTitle"]</h2>
+        <div class="pk-arch">
+            <div class="pk-node">
+                <strong>@L["Pokedex_ArchUi"]</strong>
+                <span>@L["Pokedex_ArchUiCap"]</span>
+            </div>
+            <div class="pk-node pk-node-main">
+                <strong>@L["Pokedex_ArchApi"]</strong>
+                <span>@L["Pokedex_ArchApiCap"]</span>
+            </div>
+            <div class="pk-node">
+                <strong>@L["Pokedex_ArchModel"]</strong>
+                <span>@L["Pokedex_ArchModelCap"]</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pk-stack" id="pk-stack">
+    <div class="pk-section">
+        <h2>@L["Pokedex_StackTitle"]</h2>
+        <div class="pk-chips">
+            @foreach (var tech in TechStack)
+            {
+                <span class="pk-chip">@tech</span>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="light" id="pk-demo">
+    <div class="pk-section">
+        <h2>@L["Pokedex_DemoTitle"]</h2>
+        <p class="pk-lead">@L["Pokedex_DemoNote"]</p>
+        <div class="pk-grid">
+            <div class="box pk-card">
+                <h3>@L["Pokedex_UseMobileTitle"]</h3>
+                <p class="small">@L["Pokedex_UseMobileText"]</p>
+            </div>
+            <div class="box pk-card">
+                <h3>@L["Pokedex_UseDesktopTitle"]</h3>
+                <p class="small">@L["Pokedex_UseDesktopText"]</p>
+            </div>
+        </div>
+        <div class="pk-demo">
+            <div class="pk-samples">
+                <p class="small"><strong>@L["Pokedex_DemoPick"]</strong></p>
+                <div class="pk-sample-btns">
+                    @foreach (var sample in Samples)
+                    {
+                        <button type="button"
+                                class="pk-sample-btn @(sample == selectedSample ? "active" : "")"
+                                @onclick="() => selectedSample = sample">
+                            @sample.Name
+                        </button>
+                    }
+                </div>
+            </div>
+            <div class="box pk-result">
+                <p class="small pk-result-label">@L["Pokedex_DemoResult"]</p>
+                <h3>@selectedSample.Name <span class="pk-dex">@selectedSample.Dex</span></h3>
+                <p class="small">@L[selectedSample.DescKey]</p>
+                <p class="small"><strong>@L["Pokedex_DemoConfidence"]: @ConfidenceText</strong></p>
+                <div class="pk-conf-bar">
+                    <div class="pk-conf-fill" style="width: @ConfidenceWidth"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pk-cta" id="pk-cta">
+    <div class="pk-section">
+        <h2>@L["Pokedex_CtaTitle"]</h2>
+        <p class="pk-lead">@L["Pokedex_CtaText"]</p>
+        <div class="pk-cta-row">
+            <a class="pk-btn pk-btn-primary" href="@RepoUrl" target="_blank" rel="noopener noreferrer">
+                @L["Pokedex_CtaRepo"]
+            </a>
+        </div>
+    </div>
+</section>
+
+<Footer Http=@Http PrimaryColor="#4E567E" SecondaryColor="#D2F1E4" />
+
+@code {
+    private const string RepoUrl = "https://github.com/alekswheeler";
+
+    private sealed record Card(string Title, string Text);
+
+    private static readonly Card[] DiffCards = new[]
+    {
+        new Card("Pokedex_CardApiTitle", "Pokedex_CardApiText"),
+        new Card("Pokedex_CardModelTitle", "Pokedex_CardModelText"),
+        new Card("Pokedex_CardContractTitle", "Pokedex_CardContractText"),
+        new Card("Pokedex_CardUiTitle", "Pokedex_CardUiText"),
+    };
+
+    private static readonly Card[] Steps = new[]
+    {
+        new Card("Pokedex_Step1Title", "Pokedex_Step1Text"),
+        new Card("Pokedex_Step2Title", "Pokedex_Step2Text"),
+        new Card("Pokedex_Step3Title", "Pokedex_Step3Text"),
+        new Card("Pokedex_Step4Title", "Pokedex_Step4Text"),
+    };
+
+    private static readonly string[] TechStack = new[]
+    {
+        "C#", "ASP.NET Core", "Blazor", "ONNX", "REST / JSON",
+    };
+
+    private sealed record Sample(string Name, string Dex, double Confidence, string DescKey);
+
+    private static readonly Sample[] Samples = new[]
+    {
+        new Sample("Pikachu", "#0025", 98.7, "Pokedex_Sample1Desc"),
+        new Sample("Charizard", "#0006", 96.2, "Pokedex_Sample2Desc"),
+        new Sample("Bulbasaur", "#0001", 93.5, "Pokedex_Sample3Desc"),
+    };
+
+    private Sample selectedSample = Samples[0];
+
+    private string ConfidenceText =>
+        selectedSample.Confidence.ToString("F1", CultureInfo.CurrentCulture) + "%";
+
+    private string ConfidenceWidth =>
+        selectedSample.Confidence.ToString("F1", CultureInfo.InvariantCulture) + "%";
+}

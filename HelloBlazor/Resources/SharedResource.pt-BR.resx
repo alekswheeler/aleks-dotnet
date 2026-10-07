@@ -136,4 +136,142 @@
   <data name="Language_Label" xml:space="preserve">
     <value>Idioma</value>
   </data>
+  <data name="Pokedex_Badge" xml:space="preserve">
+    <value>Visão Computacional • .NET + Python</value>
+  </data>
+  <data name="Pokedex_Title" xml:space="preserve">
+    <value>Pokédex IA</value>
+  </data>
+  <data name="Pokedex_Subtitle" xml:space="preserve">
+    <value>Aponte a câmera para qualquer Pokémon e deixe o modelo dizer quem é esse Pokémon — com o C# executando o modelo de ML para inferência, da API até a tela.</value>
+  </data>
+  <data name="Pokedex_CtaRepo" xml:space="preserve">
+    <value>Ver no GitHub</value>
+  </data>
+  <data name="Pokedex_CtaDemo" xml:space="preserve">
+    <value>Ver como funciona</value>
+  </data>
+  <data name="Pokedex_DiffTitle" xml:space="preserve">
+    <value>O diferencial: C# como cola da IA</value>
+  </data>
+  <data name="Pokedex_DiffText" xml:space="preserve">
+    <value>A principal contribuição: o C# pode rodar modelos de ML para fazer inferência. O modelo de reconhecimento de imagem executa dentro do processo .NET — sem runtime separado em produção. Ao redor dele, a mesma stack entrega API HTTP, validação, cache e interface web como um produto de verdade, não como script de demonstração.</value>
+  </data>
+  <data name="Pokedex_CardApiTitle" xml:space="preserve">
+    <value>API em ASP.NET Core</value>
+  </data>
+  <data name="Pokedex_CardApiText" xml:space="preserve">
+    <value>Recebe a imagem, valida e orquestra o pipeline com async/await e contratos limpos.</value>
+  </data>
+  <data name="Pokedex_CardModelTitle" xml:space="preserve">
+    <value>Inferência em C#</value>
+  </data>
+  <data name="Pokedex_CardModelText" xml:space="preserve">
+    <value>O modelo de ML roda dentro do .NET e responde a uma pergunta — qual Pokémon é este, e com qual confiança? Sem notebook, sem processo auxiliar.</value>
+  </data>
+  <data name="Pokedex_UseMobileTitle" xml:space="preserve">
+    <value>No celular</value>
+  </data>
+  <data name="Pokedex_UseMobileText" xml:space="preserve">
+    <value>Aponte a câmera para a imagem do Pokémon e receba a identificação na hora.</value>
+  </data>
+  <data name="Pokedex_UseDesktopTitle" xml:space="preserve">
+    <value>No computador</value>
+  </data>
+  <data name="Pokedex_UseDesktopText" xml:space="preserve">
+    <value>Faça upload de um Pokémon da galeria para o reconhecimento.</value>
+  </data>
+  <data name="Pokedex_CardContractTitle" xml:space="preserve">
+    <value>Contratos limpos</value>
+  </data>
+  <data name="Pokedex_CardContractText" xml:space="preserve">
+    <value>DTOs em C# de um lado, esquema JSON do outro. O modelo pode ser trocado sem tocar no aplicativo.</value>
+  </data>
+  <data name="Pokedex_CardUiTitle" xml:space="preserve">
+    <value>Interface em Blazor</value>
+  </data>
+  <data name="Pokedex_CardUiText" xml:space="preserve">
+    <value>A mesma página que você está lendo: upload, resultado e confiança, renderizados direto da resposta da API.</value>
+  </data>
+  <data name="Pokedex_HowTitle" xml:space="preserve">
+    <value>Como funciona</value>
+  </data>
+  <data name="Pokedex_Step1Title" xml:space="preserve">
+    <value>Captura</value>
+  </data>
+  <data name="Pokedex_Step1Text" xml:space="preserve">
+    <value>O usuário envia uma foto de um Pokémon — pela câmera no celular ou por upload da galeria no computador.</value>
+  </data>
+  <data name="Pokedex_Step2Title" xml:space="preserve">
+    <value>Pré-processamento</value>
+  </data>
+  <data name="Pokedex_Step2Text" xml:space="preserve">
+    <value>A API em C# valida, redimensiona e normaliza a imagem para o modelo.</value>
+  </data>
+  <data name="Pokedex_Step3Title" xml:space="preserve">
+    <value>Inferência</value>
+  </data>
+  <data name="Pokedex_Step3Text" xml:space="preserve">
+    <value>O serviço em Python executa o modelo de reconhecimento de imagem e devolve as principais predições.</value>
+  </data>
+  <data name="Pokedex_Step4Title" xml:space="preserve">
+    <value>Resultado</value>
+  </data>
+  <data name="Pokedex_Step4Text" xml:space="preserve">
+    <value>A API enriquece a resposta e a interface mostra o Pokémon com sua pontuação de confiança.</value>
+  </data>
+  <data name="Pokedex_ArchTitle" xml:space="preserve">
+    <value>Arquitetura</value>
+  </data>
+  <data name="Pokedex_ArchUi" xml:space="preserve">
+    <value>Interface Blazor</value>
+  </data>
+  <data name="Pokedex_ArchUiCap" xml:space="preserve">
+    <value>upload + resultado</value>
+  </data>
+  <data name="Pokedex_ArchApi" xml:space="preserve">
+    <value>API em C# (ASP.NET Core)</value>
+  </data>
+  <data name="Pokedex_ArchApiCap" xml:space="preserve">
+    <value>validação • orquestração • cache</value>
+  </data>
+  <data name="Pokedex_ArchModel" xml:space="preserve">
+    <value>Modelo de ML (inferência em C#)</value>
+  </data>
+  <data name="Pokedex_ArchModelCap" xml:space="preserve">
+    <value>inferência • confiança</value>
+  </data>
+  <data name="Pokedex_StackTitle" xml:space="preserve">
+    <value>Stack técnica</value>
+  </data>
+  <data name="Pokedex_DemoTitle" xml:space="preserve">
+    <value>Teste o fluxo</value>
+  </data>
+  <data name="Pokedex_DemoNote" xml:space="preserve">
+    <value>Simulação interativa com predições de exemplo — a inferência real roda na API do projeto.</value>
+  </data>
+  <data name="Pokedex_DemoPick" xml:space="preserve">
+    <value>Escolha uma foto de exemplo:</value>
+  </data>
+  <data name="Pokedex_DemoResult" xml:space="preserve">
+    <value>Predição</value>
+  </data>
+  <data name="Pokedex_DemoConfidence" xml:space="preserve">
+    <value>Confiança</value>
+  </data>
+  <data name="Pokedex_Sample1Desc" xml:space="preserve">
+    <value>O mascote indiscutível. O modelo acerta mesmo em fotos tremidas.</value>
+  </data>
+  <data name="Pokedex_Sample2Desc" xml:space="preserve">
+    <value>Asas, chama na cauda e atitude — uma silhueta inconfundível.</value>
+  </data>
+  <data name="Pokedex_Sample3Desc" xml:space="preserve">
+    <value>O bulbo nas costas é o sinal visual mais forte.</value>
+  </data>
+  <data name="Pokedex_CtaTitle" xml:space="preserve">
+    <value>C# além do backend</value>
+  </data>
+  <data name="Pokedex_CtaText" xml:space="preserve">
+    <value>Se você trabalha com modelos de IA, não precisa sair do ecossistema .NET para entregá-los. Este projeto é a prova.</value>
+  </data>
 </root>

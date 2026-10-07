@@ -1,0 +1,259 @@
+@page "/dropbook"
+@implements IAsyncDisposable
+@inject IJSRuntime JS
+
+<HeadContent>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600;700&family=Mukta+Vaani:wght@300;400;500;600;700&family=Sorts+Mill+Goudy:ital@0;1&display=swap" rel="stylesheet" />
+</HeadContent>
+
+<PageTitle>DropBook — Agenda no automático</PageTitle>
+
+<div class="dropbook-page" @ref="_root">
+<nav class="navbar" id="topo">
+        <a href="#inicio" class="navbar-logo">DropBook</a>
+        <ul class="navbar-links">
+            <li><a href="#como-funciona" data-nav>Como Funciona</a></li>
+            <li><a href="#beneficios" data-nav>Benefícios</a></li>
+            <li><a href="#faq" data-nav>FAQ</a></li>
+        </ul>
+        <a href="#download" class="navbar-cta" data-spot>Baixar App</a>
+        <div class="nav-progress" id="navProgress"></div>
+    </nav>
+
+    <section class="hero fit" id="inicio">
+        <div class="orb orb-1" data-parallax="0.05" aria-hidden="true"></div>
+        <div class="orb orb-2" data-parallax="0.02" aria-hidden="true"></div>
+        <div class="hero-content" data-stagger>
+            <h1 class="hero-title" data-reveal="up" style="--i:0">
+                Suas agendas, <span class="highlight">no automático</span>, enquanto você trabalha.
+            </h1>
+            <p class="hero-subtitle" data-reveal="up" style="--i:1">
+                A DropBook organiza seus horários, confirma clientes e elimina faltas — tudo pelo celular, sem complicação.
+            </p>
+            <a href="#download" class="hero-cta" data-reveal="up" data-spot style="--i:2">Baixar App Grátis</a>
+        </div>
+        <div class="hero-mockup" data-reveal="scale" style="--i:1">
+            <div class="phone-frame" data-tilt="8">
+                <div class="phone-screen">
+                    <div class="phone-header">
+                        <h3>Agenda de Hoje</h3>
+                        <p>5 compromissos</p>
+                    </div>
+                    <div class="phone-bookings" data-stagger>
+                        <div class="booking-card confirmed" data-reveal="up" style="--i:0">
+                            <div class="client">Maria Silva</div>
+                            <div class="service">Corte + Coloração</div>
+                            <div class="time">09:00 — Confirmado</div>
+                        </div>
+                        <div class="booking-card confirmed" data-reveal="up" style="--i:1">
+                            <div class="client">João Santos</div>
+                            <div class="service">Barba</div>
+                            <div class="time">10:30 — Confirmado</div>
+                        </div>
+                        <div class="booking-card" data-reveal="up" style="--i:2">
+                            <div class="client">Ana Costa</div>
+                            <div class="service">Manicure</div>
+                            <div class="time">14:00 — Pendente</div>
+                        </div>
+                        <div class="booking-card confirmed" data-reveal="up" style="--i:3">
+                            <div class="client">Carlos Lima</div>
+                            <div class="service">Corte</div>
+                            <div class="time">15:30 — Confirmado</div>
+                        </div>
+                    </div>
+                    <div class="phone-nav">
+                        <span class="active"></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,60 C360,120 1080,0 1440,60 L1440,120 L0,120 Z" fill="#3C2A21"/>
+        </svg>
+    </div>
+
+    <section class="problem fit" id="dores">
+        <div class="problem-header" data-reveal="up">
+            <h2 class="problem-title">Cansado de perder dinheiro no automático?</h2>
+            <p class="problem-subtitle">O método manual está te custando mais do que você imagina.</p>
+        </div>
+        <div class="problem-list" data-stagger>
+            <div class="problem-item" data-reveal="up" style="--i:0">
+                <div class="problem-icon" data-spot>
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <div class="problem-item-text"><h3>Clientes que somem</h3><p>Você agenda, confirma, e o cliente simplesmente não aparece. Sem aviso, sem explicação.</p></div>
+            </div>
+            <div class="problem-item" data-reveal="up" style="--i:1">
+                <div class="problem-icon" data-spot>
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div class="problem-item-text"><h3>Tempo perdido com confirmações</h3><p>Horas do seu dia gastas mandando mensagem, ligando e reagendando. Tempo que poderia ser atendendo.</p></div>
+            </div>
+            <div class="problem-item" data-reveal="up" style="--i:2">
+                <div class="problem-icon" data-spot>
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </div>
+                <div class="problem-item-text"><h3>Faturamento caindo</h3><p>Horários vazios = dinheiro na mesa. Cada cliente que falta é um buraco no seu faturamento mensal.</p></div>
+            </div>
+            <div class="problem-item" data-reveal="up" style="--i:3">
+                <div class="problem-icon" data-spot>
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                </div>
+                <div class="problem-item-text"><h3>Estresse e frustração</h3><p>Você trabalha duro, mas a desorganização faz você parecer amador e prejudica sua reputação.</p></div>
+            </div>
+        </div>
+        <div class="problem-impact" data-reveal="blur">
+            <p>"Cada cliente que falta não é só um horário vazio — é dinheiro que saiu do seu bolso."</p>
+        </div>
+    </section>
+
+    <section class="solution fit" id="solucao">
+        <div class="orb solution-orb" data-parallax="0.03" aria-hidden="true"></div>
+        <div class="solution-content" data-reveal="up">
+            <h2 class="solution-title">Conheça sua nova secretária</h2>
+            <p class="solution-text">A DropBook funciona como uma <strong>secretária invisível 24/7</strong> que cuida de toda a sua agenda enquanto você foca no que realmente importa: atender seus clientes. Sem complicação, sem aprendizado difícil — basta baixar e começar a usar.</p>
+            <p class="solution-highlight">Tecnologia que trabalha por você, não contra você.</p>
+        </div>
+    </section>
+
+    <section class="differential fit" id="beneficios">
+        <div class="differential-header" data-reveal="up">
+            <h2 class="differential-title">Feito para quem vive no celular</h2>
+            <p class="differential-subtitle">Esqueça os sistemas engessados de computador. O DropBook te dá liberdade total.</p>
+        </div>
+        <div class="differential-grid">
+            <div class="diff-card diff-card-bad" data-reveal="left" data-tilt="5">
+                <h3 class="diff-card-title">Softwares de PC</h3>
+                <ul class="diff-list">
+                    <li><span class="diff-icon diff-icon-no">✕</span>Preso ao computador do salão</li>
+                    <li><span class="diff-icon diff-icon-no">✕</span>Instalação complicada e cara</li>
+                    <li><span class="diff-icon diff-icon-no">✕</span>Interface confusa e antiga</li>
+                    <li><span class="diff-icon diff-icon-no">✕</span>Sem confirmação automática</li>
+                </ul>
+            </div>
+            <div class="diff-vs" data-reveal="scale">VS</div>
+            <div class="diff-card diff-card-good" data-reveal="right" data-tilt="6">
+                <h3 class="diff-card-title">DropBook App</h3>
+                <ul class="diff-list">
+                    <li><span class="diff-icon diff-icon-yes">✓</span>Agenda no bolso, onde você estiver</li>
+                    <li><span class="diff-icon diff-icon-yes">✓</span>Baixe e use em 2 minutos</li>
+                    <li><span class="diff-icon diff-icon-yes">✓</span>Simples, pensado para autônomos</li>
+                    <li><span class="diff-icon diff-icon-yes">✓</span>Confirma clientes no automático</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="steps fit" id="como-funciona">
+        <div class="steps-header" data-reveal="up">
+            <h2 class="steps-title">Comece em 3 passos simples</h2>
+            <p class="steps-subtitle">Sem técnico, sem manual de 50 páginas. Em minutos você está no ar.</p>
+        </div>
+        <div class="steps-grid">
+            <div class="step-card" data-reveal="up" data-tilt="4" style="--i:0">
+                <div class="step-num">1</div>
+                <h3>Baixe</h3>
+                <p>Instale o app grátis no seu celular em segundos, sem cartão e sem burocracia.</p>
+            </div>
+            <div class="step-card" data-reveal="up" data-tilt="4" style="--i:1">
+                <div class="step-num">2</div>
+                <h3>Conecte</h3>
+                <p>Cadastre seus serviços e horários. O app assume as confirmações sozinho.</p>
+            </div>
+            <div class="step-card" data-reveal="up" data-tilt="4" style="--i:2">
+                <div class="step-num">3</div>
+                <h3>Lucre</h3>
+                <p>Atenda com agenda cheia e zero no-show, enquanto a IA trabalha por você.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq fit" id="faq">
+        <div class="faq-inner">
+            <h2 class="faq-title" data-reveal="up">Perguntas frequentes</h2>
+            <div class="faq-item" data-reveal="up" style="--i:0">
+                <button class="faq-q" aria-expanded="false">Preciso saber mexer em computador?<span class="faq-icon">+</span></button>
+                <div class="faq-a"><p>Não. O DropBook foi feito para o celular. Se você sabe usar WhatsApp, sabe usar o DropBook.</p></div>
+            </div>
+            <div class="faq-item" data-reveal="up" style="--i:1">
+                <button class="faq-q" aria-expanded="false">E se o cliente não confirmar?<span class="faq-icon">+</span></button>
+                <div class="faq-a"><p>O app envia lembretes automáticos e libera o horário para outro cliente se não houver confirmação.</p></div>
+            </div>
+            <div class="faq-item" data-reveal="up" style="--i:2">
+                <button class="faq-q" aria-expanded="false">Funciona para minha área?<span class="faq-icon">+</span></button>
+                <div class="faq-a"><p>Sim. Cabeleireiros, barbeiros, manicures, esteticistas e qualquer prestador com agenda por horário.</p></div>
+            </div>
+            <div class="faq-item" data-reveal="up" style="--i:3">
+                <button class="faq-q" aria-expanded="false">Posso cancelar quando quiser?<span class="faq-icon">+</span></button>
+                <div class="faq-a"><p>Sim, sem fidelidade e sem multa. Você fica só enquanto fizer sentido para o seu bolso.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-final fit" id="download">
+        <div class="orb" data-parallax="0.04" aria-hidden="true" style="width:420px;height:420px;left:-140px;bottom:-140px;background:rgba(172,225,175,.1)"></div>
+        <div class="cta-final-inner">
+            <h2 class="cta-final-title" data-reveal="up">Chega de horário vazio e cliente sumido</h2>
+            <p class="cta-final-text" data-reveal="up" style="--i:1">Baixe agora e deixe sua agenda no automático ainda hoje. Leva menos de 2 minutos.</p>
+            <a href="#download" class="cta-giant" data-reveal="scale" data-spot style="--i:2">Baixar App Grátis</a>
+            <p class="cta-guarantee" data-reveal="blur">Garantia incondicional: se não amar, cancele sem custo.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <a href="#inicio" class="footer-logo">DropBook</a>
+            <ul class="footer-links">
+                <li><a href="#como-funciona">Como Funciona</a></li>
+                <li><a href="#beneficios">Benefícios</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <p class="footer-copy">© 2026 DropBook. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</div>
+
+@code {
+    private ElementReference _root;
+    private IJSObjectReference? _module;
+    private bool _initialized;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender)
+            return;
+        try
+        {
+            // Lazy-load: o JS so e baixado/executado quando a rota /dropbook e visitada.
+            // O arquivo tambem expoe window.dropbookInit/window.dropbookDestroy como globais.
+            _module = await JS.InvokeAsync<IJSObjectReference>("import", "./js/dropbook.js");
+            await JS.InvokeVoidAsync("dropbookInit", _root);
+            _initialized = true;
+        }
+        catch
+        {
+            // Landing permanece legivel/estatica mesmo se o JS falhar.
+        }
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        try
+        {
+            if (_initialized)
+                await JS.InvokeVoidAsync("dropbookDestroy");
+            if (_module is not null)
+                await _module.DisposeAsync();
+        }
+        catch
+        {
+            // Nunca quebrar a navegacao SPA no cleanup.
+        }
+    }
+}
