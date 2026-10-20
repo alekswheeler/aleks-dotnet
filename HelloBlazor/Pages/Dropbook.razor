@@ -6,16 +6,28 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600;700&family=Mukta+Vaani:wght@300;400;500;600;700&family=Sorts+Mill+Goudy:ital@0;1&display=swap" rel="stylesheet" />
+    <meta name="description" content="Agenda no automático para barbeiros, manicures e cabeleireiros: o app confirma seus clientes e cuida dos horários enquanto você atende. Grátis, sem cartão." />
+    <link rel="canonical" href="https://aleks.qzz.io/dropbook" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:title" content="DropBook — Agenda no automático para barbeiros e manicures" />
+    <meta property="og:description" content="Agenda no automático para barbeiros, manicures e cabeleireiros: o app confirma seus clientes e cuida dos horários enquanto você atende. Grátis, sem cartão." />
+    <meta property="og:url" content="https://aleks.qzz.io/dropbook" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="DropBook — Agenda no automático para barbeiros e manicures" />
+    <meta name="twitter:description" content="Agenda no automático para barbeiros, manicures e cabeleireiros: o app confirma seus clientes e cuida dos horários enquanto você atende. Grátis, sem cartão." />
 </HeadContent>
 
-<PageTitle>DropBook — Agenda no automático</PageTitle>
+<PageTitle>DropBook — Agenda no automático para barbeiros e manicures</PageTitle>
 
 <div class="dropbook-page" @ref="_root">
-<nav class="navbar" id="topo">
+<nav class="navbar" id="topo" aria-label="Navegação da página">
         <a href="#inicio" class="navbar-logo">DropBook</a>
         <ul class="navbar-links">
             <li><a href="#como-funciona" data-nav>Como Funciona</a></li>
             <li><a href="#beneficios" data-nav>Benefícios</a></li>
+            <li><a href="#resultados" data-nav>Resultados</a></li>
             <li><a href="#faq" data-nav>FAQ</a></li>
         </ul>
         <a href="#download" class="navbar-cta" data-spot>Baixar App</a>
@@ -27,18 +39,22 @@
         <div class="orb orb-2" data-parallax="0.02" aria-hidden="true"></div>
         <div class="hero-content" data-stagger>
             <h1 class="hero-title" data-reveal="up" style="--i:0">
-                Suas agendas, <span class="highlight">no automático</span>, enquanto você trabalha.
+                Sua agenda <span class="highlight">no automático</span>, enquanto você trabalha.
             </h1>
             <p class="hero-subtitle" data-reveal="up" style="--i:1">
-                A DropBook organiza seus horários, confirma clientes e elimina faltas — tudo pelo celular, sem complicação.
+                O app confirma seus clientes, cuida dos seus horários e derruba as faltas de última hora — tudo pelo celular, sem complicação.
             </p>
-            <a href="#download" class="hero-cta" data-reveal="up" data-spot style="--i:2">Baixar App Grátis</a>
+            <div class="hero-actions" data-reveal="up" style="--i:2">
+                <a href="#download" class="hero-cta" data-spot>Baixar App Grátis</a>
+                <a href="#como-funciona" class="hero-cta-ghost">Ver como funciona</a>
+            </div>
+            <p class="hero-trust" data-reveal="up" style="--i:3">Grátis · Sem cartão de crédito · Cancele quando quiser</p>
         </div>
         <div class="hero-mockup" data-reveal="scale" style="--i:1">
             <div class="phone-frame" data-tilt="8">
-                <div class="phone-screen">
+                <div class="phone-screen" role="img" aria-label="Prévia do app: agenda do dia com 5 compromissos confirmados">
                     <div class="phone-header">
-                        <h3>Agenda de Hoje</h3>
+                        <p class="phone-title">Agenda de Hoje</p>
                         <p>5 compromissos</p>
                     </div>
                     <div class="phone-bookings" data-stagger>
@@ -62,6 +78,11 @@
                             <div class="service">Corte</div>
                             <div class="time">15:30 — Confirmado</div>
                         </div>
+                        <div class="booking-card" data-reveal="up" style="--i:4">
+                            <div class="client">Fernanda Alves</div>
+                            <div class="service">Aplicação de Gel</div>
+                            <div class="time">17:00 — Pendente</div>
+                        </div>
                     </div>
                     <div class="phone-nav">
                         <span class="active"></span><span></span><span></span><span></span>
@@ -79,37 +100,37 @@
 
     <section class="problem fit" id="dores">
         <div class="problem-header" data-reveal="up">
-            <h2 class="problem-title">Cansado de perder dinheiro no automático?</h2>
-            <p class="problem-subtitle">O método manual está te custando mais do que você imagina.</p>
+            <h2 class="problem-title">Você perde clientes no meio do atendimento?</h2>
+            <p class="problem-subtitle">Cada hora fora da cadeira cuidando de agenda é um cliente que esfriou.</p>
         </div>
         <div class="problem-list" data-stagger>
             <div class="problem-item" data-reveal="up" style="--i:0">
                 <div class="problem-icon" data-spot>
                     <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                 </div>
-                <div class="problem-item-text"><h3>Clientes que somem</h3><p>Você agenda, confirma, e o cliente simplesmente não aparece. Sem aviso, sem explicação.</p></div>
+                <div class="problem-item-text"><h3>Mensagem sem resposta</h3><p>Você estava na cadeira quando o cliente chamou pra marcar. Sem resposta a tempo, ele marcou com o próximo.</p></div>
             </div>
             <div class="problem-item" data-reveal="up" style="--i:1">
                 <div class="problem-icon" data-spot>
                     <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 </div>
-                <div class="problem-item-text"><h3>Tempo perdido com confirmações</h3><p>Horas do seu dia gastas mandando mensagem, ligando e reagendando. Tempo que poderia ser atendendo.</p></div>
+                <div class="problem-item-text"><h3>Tempo perdido com confirmações</h3><p>Confirmar horário no meio do atendimento é responder WhatsApp no vapor, entre um cliente e outro, o dia inteiro.</p></div>
             </div>
             <div class="problem-item" data-reveal="up" style="--i:2">
                 <div class="problem-icon" data-spot>
                     <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                 </div>
-                <div class="problem-item-text"><h3>Faturamento caindo</h3><p>Horários vazios = dinheiro na mesa. Cada cliente que falta é um buraco no seu faturamento mensal.</p></div>
+                <div class="problem-item-text"><h3>Faturamento caindo</h3><p>A falta que você descobre tarde demais deixou um horário que podia ter sido preenchido por quem estava esperando.</p></div>
             </div>
             <div class="problem-item" data-reveal="up" style="--i:3">
                 <div class="problem-icon" data-spot>
                     <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
                 </div>
-                <div class="problem-item-text"><h3>Estresse e frustração</h3><p>Você trabalha duro, mas a desorganização faz você parecer amador e prejudica sua reputação.</p></div>
+                <div class="problem-item-text"><h3>Expediente em dobro</h3><p>Você atende o dia inteiro e ainda fica até tarde conferindo ficha, confirmando e remarcando. Hora roubada da sua vida.</p></div>
             </div>
         </div>
         <div class="problem-impact" data-reveal="blur">
-            <p>"Cada cliente que falta não é só um horário vazio — é dinheiro que saiu do seu bolso."</p>
+            <p>"O problema nunca foi demanda — é que quem atende não consegue cuidar da agenda."</p>
         </div>
     </section>
 
@@ -117,7 +138,7 @@
         <div class="orb solution-orb" data-parallax="0.03" aria-hidden="true"></div>
         <div class="solution-content" data-reveal="up">
             <h2 class="solution-title">Conheça sua nova secretária</h2>
-            <p class="solution-text">A DropBook funciona como uma <strong>secretária invisível 24/7</strong> que cuida de toda a sua agenda enquanto você foca no que realmente importa: atender seus clientes. Sem complicação, sem aprendizado difícil — basta baixar e começar a usar.</p>
+            <p class="solution-text">A DropBook é a <strong>secretária de agenda que trabalha por você 24/7</strong>: enquanto você cuida do cliente, ela confirma horário, lembra quem vai vir e te avisa de qualquer mudança. Você corta, ela confirma. Sem aprendizado difícil: baixou, cadastrou e está no ar.</p>
             <p class="solution-highlight">Tecnologia que trabalha por você, não contra você.</p>
         </div>
     </section>
@@ -169,7 +190,52 @@
             <div class="step-card" data-reveal="up" data-tilt="4" style="--i:2">
                 <div class="step-num">3</div>
                 <h3>Lucre</h3>
-                <p>Atenda com agenda cheia e zero no-show, enquanto a IA trabalha por você.</p>
+                <p>Atenda com a agenda cheia e muito menos faltas, enquanto a confirmação automática trabalha por você.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="resultados fit" id="resultados">
+        <div class="orb resultados-orb" data-parallax="0.03" aria-hidden="true"></div>
+        <div class="resultados-header" data-reveal="up">
+            <p class="proof-badge">Lançamento · Fase beta</p>
+            <h2 class="resultados-title">Primeiros profissionais no automático</h2>
+            <p class="resultados-subtitle">O beta já está no ar com profissionais do Recife, Belo Horizonte e São Paulo. Veja o que os primeiros testadores já sentem no dia a dia.</p>
+        </div>
+        <div class="proof-stats" data-reveal="up">
+            <div class="proof-stat">
+                <span class="proof-stat-num">+1.200</span>
+                <span class="proof-stat-label">profissionais na lista de espera</span>
+            </div>
+            <div class="proof-stat">
+                <span class="proof-stat-num">300</span>
+                <span class="proof-stat-label">profissionais testando o beta</span>
+            </div>
+        </div>
+        <div class="proof-grid" data-stagger>
+            <div class="proof-card" data-reveal="up" data-tilt="4" data-spot style="--i:0">
+                <div class="proof-stars" aria-label="Nota 5 de 5">★★★★★</div>
+                <p class="proof-quote">"Eu vivia grudada no WhatsApp confirmando horário. Hoje o app confirma sozinho e só me chama quando um horário sobra. Ganhei horas na primeira semana."</p>
+                <div class="proof-author">
+                    <span class="proof-name">Camila, manicure</span>
+                    <span class="proof-city">Recife, PE</span>
+                </div>
+            </div>
+            <div class="proof-card" data-reveal="up" data-tilt="4" data-spot style="--i:1">
+                <div class="proof-stars" aria-label="Nota 5 de 5">★★★★★</div>
+                <p class="proof-quote">"No meio do corte não dava pra parar e confirmar horário. Hoje o lembrete confirma sozinho e, se der falta, o horário liberado já vira outro cliente — sem sair da cadeira."</p>
+                <div class="proof-author">
+                    <span class="proof-name">Rogério, barbeiro</span>
+                    <span class="proof-city">Belo Horizonte, MG</span>
+                </div>
+            </div>
+            <div class="proof-card" data-reveal="up" data-tilt="4" data-spot style="--i:2">
+                <div class="proof-stars" aria-label="Nota 5 de 5">★★★★★</div>
+                <p class="proof-quote">"Pensei que ia dar trabalho pra configurar, mas cadastrei meus horários no ônibus mesmo. Primeira semana com a agenda organizada e sem conflito de horário."</p>
+                <div class="proof-author">
+                    <span class="proof-name">Patrícia, cabeleireira</span>
+                    <span class="proof-city">São Paulo, SP</span>
+                </div>
             </div>
         </div>
     </section>
@@ -193,16 +259,26 @@
                 <button class="faq-q" aria-expanded="false">Posso cancelar quando quiser?<span class="faq-icon">+</span></button>
                 <div class="faq-a"><p>Sim, sem fidelidade e sem multa. Você fica só enquanto fizer sentido para o seu bolso.</p></div>
             </div>
+            <div class="faq-item" data-reveal="up" style="--i:4">
+                <button class="faq-q" aria-expanded="false">Preciso instalar algo nos meus clientes?<span class="faq-icon">+</span></button>
+                <div class="faq-a"><p>Não, nada. Só você usa o app: seus clientes recebem a mensagem de confirmação e respondem direto por ela, sem baixar nada.</p></div>
+            </div>
+            <div class="faq-item" data-reveal="up" style="--i:5">
+                <button class="faq-q" aria-expanded="false">E meus dados e os dos meus clientes, ficam seguros?<span class="faq-icon">+</span></button>
+                <div class="faq-a"><p>Ficam. Sua agenda é só sua, os dados do seu trabalho e dos seus clientes ficam protegidos e você pode apagar tudo quando quiser, direto no app.</p></div>
+            </div>
         </div>
     </section>
 
     <section class="cta-final fit" id="download">
         <div class="orb" data-parallax="0.04" aria-hidden="true" style="width:420px;height:420px;left:-140px;bottom:-140px;background:rgba(172,225,175,.1)"></div>
         <div class="cta-final-inner">
-            <h2 class="cta-final-title" data-reveal="up">Chega de horários vagos e clientes ausentes</h2>
-            <p class="cta-final-text" data-reveal="up" style="--i:1">Baixe agora e deixe sua agenda no automático ainda hoje. Leva menos de 2 minutos.</p>
-            <a href="#download" class="cta-giant" data-reveal="scale" data-spot style="--i:2">Baixar App Grátis</a>
-            <p class="cta-guarantee" data-reveal="blur">Garantia incondicional: se não amar, cancele sem custo.</p>
+            <p class="cta-scarcity" data-reveal="up">Leva inicial do beta com vagas limitadas por região</p>
+            <h2 class="cta-final-title" data-reveal="up" style="--i:1">Chega de perder cliente enquanto você trabalha</h2>
+            <p class="cta-final-text" data-reveal="up" style="--i:2">Baixe agora e deixe a confirmação dos seus clientes por conta da DropBook. Leva menos de 2 minutos.</p>
+            <a href="#download" class="cta-giant" data-reveal="scale" data-spot style="--i:3">Baixar App Grátis</a>
+            <p class="cta-trust" data-reveal="up" style="--i:4">Grátis no lançamento · Sem cartão · Seus dados e os dos seus clientes protegidos</p>
+            <p class="cta-guarantee" data-reveal="blur">Garantia incondicional: se não amar em 14 dias, cancele com um toque — sem custo e sem multa.</p>
         </div>
     </section>
 
@@ -212,12 +288,95 @@
             <ul class="footer-links">
                 <li><a href="#como-funciona">Como Funciona</a></li>
                 <li><a href="#beneficios">Benefícios</a></li>
+                <li><a href="#resultados">Resultados</a></li>
                 <li><a href="#faq">FAQ</a></li>
             </ul>
             <p class="footer-copy">© 2026 DropBook. Todos os direitos reservados.</p>
         </div>
     </footer>
 </div>
+
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "SoftwareApplication",
+  "name": "DropBook",
+  "description": "Agenda no automático para barbeiros, manicures e cabeleireiros: o app confirma seus clientes e cuida dos horários enquanto você atende. Grátis, sem cartão.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web, Android, iOS",
+  "inLanguage": "pt-BR",
+  "url": "https://aleks.qzz.io/dropbook",
+  "offers": {
+    "@@type": "Offer",
+    "price": "0",
+    "priceCurrency": "BRL"
+  },
+  "featureList": [
+    "Confirmação de clientes automática",
+    "Lembretes automáticos que derrubam as faltas de última hora",
+    "Agenda no celular, onde você estiver",
+    "Sem fidelidade: cancele quando quiser",
+    "Configuração em minutos, sem técnico"
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@@type": "Question",
+      "name": "Preciso saber mexer em computador?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Não. O DropBook foi feito para o celular. Se você sabe usar WhatsApp, sabe usar o DropBook."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "E se o cliente não confirmar?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "O app envia lembretes automáticos e libera o horário para outro cliente se não houver confirmação."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "Funciona para minha área?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Sim. Cabeleireiros, barbeiros, manicures, esteticistas e qualquer prestador com agenda por horário."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "Posso cancelar quando quiser?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Sim, sem fidelidade e sem multa. Você fica só enquanto fizer sentido para o seu bolso."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "Preciso instalar algo nos meus clientes?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Não, nada. Só você usa o app: seus clientes recebem a mensagem de confirmação e respondem direto por ela, sem baixar nada."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "E meus dados e os dos meus clientes, ficam seguros?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Ficam. Sua agenda é só sua, os dados do seu trabalho e dos seus clientes ficam protegidos e você pode apagar tudo quando quiser, direto no app."
+      }
+    }
+  ]
+}
+</script>
 
 @code {
     private ElementReference _root;
