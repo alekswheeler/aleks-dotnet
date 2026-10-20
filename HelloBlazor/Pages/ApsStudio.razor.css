@@ -1,0 +1,192 @@
+.apsstudio-page {
+            margin: 0;
+        }
+.apsstudio-page, .apsstudio-page ::deep * { box-sizing: border-box; }
+.apsstudio-page ::deep .lp {
+            font-family: Inter, system-ui, sans-serif;
+            color: #0E1E33;
+            line-height: 1.6;
+            font-size: 17px;
+        }
+.apsstudio-page ::deep .lp h1, .apsstudio-page ::deep .lp h2, .apsstudio-page ::deep .lp h3 {
+            font-family: 'Space Grotesk', Inter, sans-serif;
+            margin: 0;
+            line-height: 1.12;
+            letter-spacing: -0.02em;
+            font-weight: 700;
+        }
+.apsstudio-page ::deep .lp p { margin: 0; }
+.apsstudio-page ::deep .in {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 88px 32px;
+        }
+.apsstudio-page ::deep .dark { background: #0E1E33; color: #fff; }
+.apsstudio-page ::deep .paper { background: #F4F6F8; }
+.apsstudio-page ::deep .eyebrow {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: #B84D00;
+            margin-bottom: 16px;
+        }
+.apsstudio-page ::deep .dark .eyebrow { color: #FF9A4D; }
+.apsstudio-page ::deep .btn {
+            display: inline-block;
+            background: #FF7A1A;
+            color: #0E1E33;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 15px 26px;
+            border: 0;
+            border-radius: 8px;
+            min-height: 48px;
+            line-height: 1.6;
+            box-shadow: none;
+        }
+.apsstudio-page ::deep .btn:hover { background: #FF9340; color: #0E1E33; text-decoration: none; box-shadow: none; }
+.apsstudio-page ::deep .btn:focus-visible, .apsstudio-page ::deep .btn2:focus-visible {
+            outline: 2px solid #0E1E33;
+            outline-offset: 3px;
+            box-shadow: none;
+        }
+.apsstudio-page ::deep .btn2 {
+            display: inline-block;
+            color: #fff;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 15px 22px;
+            border: 1px solid #4A5E7A;
+            border-radius: 8px;
+            min-height: 48px;
+            line-height: 1.6;
+            box-shadow: none;
+        }
+.apsstudio-page ::deep .btn2:hover { border-color: #fff; color: #fff; text-decoration: none; }
+.apsstudio-page ::deep .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 22px 32px;
+            flex-wrap: nowrap;
+        }
+.apsstudio-page ::deep .hero {
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            gap: 56px;
+            align-items: center;
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 48px 32px 96px;
+        }
+.apsstudio-page ::deep .grid3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+.apsstudio-page ::deep .grid2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+.apsstudio-page ::deep .card {
+            display: block;
+            background: #fff;
+            background-clip: border-box;
+            border: 1px solid #DCE2EA;
+            border-radius: 12px;
+            padding: 28px;
+        }
+.apsstudio-page ::deep .card h3 { font-size: 21px; margin-bottom: 10px; }
+.apsstudio-page ::deep .card p { color: #4A5B70; font-size: 16px; }
+.apsstudio-page ::deep .num {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 15px;
+            color: #B84D00;
+            margin-bottom: 14px;
+        }
+.apsstudio-page ::deep .gantt {
+            background: #16294A;
+            border: 1px solid #2A4068;
+            border-radius: 14px;
+            padding: 22px;
+        }
+.apsstudio-page ::deep .row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: nowrap;
+            margin: 0 0 12px;
+        }
+.apsstudio-page ::deep .row > * {
+            flex-shrink: 1;
+            width: auto;
+            max-width: 100%;
+            padding-right: 0;
+            padding-left: 0;
+            margin-top: 0;
+        }
+.apsstudio-page ::deep .lab {
+            width: 84px;
+            font-size: 13px;
+            color: #AEBBCC;
+            flex: none;
+            padding: 0;
+        }
+.apsstudio-page ::deep .track {
+            position: relative;
+            height: 30px;
+            flex: 1;
+            background: #102039;
+            border-radius: 6px;
+        }
+.apsstudio-page ::deep .bar {
+            position: absolute;
+            top: 4px;
+            height: 22px;
+            border-radius: 4px;
+        }
+.apsstudio-page ::deep .cmp { border-radius: 12px; padding: 32px; }
+.apsstudio-page ::deep .cmp h3 { font-size: 22px; margin-bottom: 18px; }
+.apsstudio-page ::deep .cmp ul { margin: 0; padding: 0; list-style: none; }
+.apsstudio-page ::deep .cmp li { padding: 10px 0; border-top: 1px solid rgba(120, 135, 155, .35); }
+.apsstudio-page ::deep .faq { border-top: 1px solid #DCE2EA; padding: 24px 0; }
+.apsstudio-page ::deep .faq h3 { font-size: 19px; margin-bottom: 8px; }
+.apsstudio-page ::deep .faq p { color: #4A5B70; }
+.apsstudio-page ::deep .contact {
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            gap: 56px;
+            align-items: start;
+        }
+.apsstudio-page ::deep .step { display: flex; gap: 16px; margin-top: 22px; }
+.apsstudio-page ::deep .step b {
+            font-family: 'Space Grotesk', sans-serif;
+            color: #FF9A4D;
+            font-size: 18px;
+            flex: none;
+            width: 28px;
+        }
+.apsstudio-page ::deep .chan { padding: 16px 0; border-top: 1px solid #DCE2EA; }
+.apsstudio-page ::deep .chan span {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: #4A5B70;
+            margin-bottom: 4px;
+        }
+@media (max-width: 860px) {
+.apsstudio-page ::deep .hero, .apsstudio-page ::deep .grid3, .apsstudio-page ::deep .grid2, .apsstudio-page ::deep .contact { grid-template-columns: 1fr; }
+.apsstudio-page ::deep .in { padding: 64px 22px; }
+.apsstudio-page ::deep .hero { padding: 24px 22px 64px; gap: 40px; }
+.apsstudio-page ::deep .nav { padding: 18px 22px; }
+.apsstudio-page ::deep .lp h1 { font-size: 38px !important; }
+}

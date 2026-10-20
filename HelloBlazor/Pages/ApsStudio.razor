@@ -1,0 +1,198 @@
+@page "/apsstudio"
+@implements IAsyncDisposable
+@inject IJSRuntime JS
+
+<HeadContent>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+    <meta name="description" content="Software APS para indústria: planejamento e programação avançados de produção com capacidade finita, Gantt interativo, simulação de cenários e replanejamento rápido. Agende uma demonstração." />
+</HeadContent>
+
+<PageTitle>Software APS – Planejamento e Programação Avançados</PageTitle>
+
+<div class="apsstudio-page" @ref="_root">
+    <x-dc>
+<div class="lp" data-canvas-width="1280" data-canvas-height="4600" data-document-role="page" data-label="Landing page APS">
+
+<div class="dark">
+<div class="nav">
+<div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px">[Nome do produto]</div>
+<a class="btn" href="#contato">Agendar demonstração</a>
+</div>
+<div class="hero">
+<div>
+<div class="eyebrow">Software APS para a indústria</div>
+<h1 style="font-size:54px">Um plano de produção que a fábrica realmente consegue cumprir.</h1>
+<p style="margin-top:22px;font-size:19px;color:#C9D3E0">Programe ordens considerando máquinas, pessoas, materiais e prazos reais. Quando o imprevisto chegar, replaneje sem refazer tudo na mão.</p>
+<div style="margin-top:34px;display:flex;gap:14px;flex-wrap:wrap">
+<a class="btn" href="#contato">Agendar demonstração</a>
+<a class="btn2" href="#como-funciona">Ver como funciona</a>
+</div>
+</div>
+<div>
+<div class="gantt" role="img" aria-label="Ilustração de um gráfico de Gantt com ordens de produção distribuídas por máquina">
+<div class="row"><div class="lab">Prensa 1</div><div class="track"><div class="bar" style="left:2%;width:30%;background:#8FB4FF"></div><div class="bar" style="left:35%;width:22%;background:#FF7A1A"></div><div class="bar" style="left:60%;width:34%;background:#8FB4FF"></div></div></div>
+<div class="row"><div class="lab">Torno CNC</div><div class="track"><div class="bar" style="left:8%;width:26%;background:#4CC9B0"></div><div class="bar" style="left:38%;width:36%;background:#8FB4FF"></div></div></div>
+<div class="row"><div class="lab">Montagem</div><div class="track"><div class="bar" style="left:30%;width:24%;background:#4CC9B0"></div><div class="bar" style="left:58%;width:26%;background:#FF7A1A"></div></div></div>
+<div class="row"><div class="lab">Embalagem</div><div class="track"><div class="bar" style="left:56%;width:18%;background:#4CC9B0"></div><div class="bar" style="left:76%;width:20%;background:#8FB4FF"></div></div></div>
+<div style="display:flex;gap:18px;margin-top:18px;font-size:13px;color:#AEBBCC;flex-wrap:wrap">
+<span><span style="display:inline-block;width:10px;height:10px;background:#FF7A1A;border-radius:2px;margin-right:6px"></span>Pedido urgente</span>
+<span style="margin-left:auto">Ilustração: programação por recurso</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="paper">
+<div class="in">
+<div class="eyebrow">O problema</div>
+<h2 style="font-size:40px;max-width:720px">O plano existe. O problema é que a fábrica não obedece a ele.</h2>
+<div class="grid3">
+<div class="card"><h3>O ERP assume capacidade infinita</h3><p>Ele calcula o que produzir, mas não confere se há máquina, pessoa e material livres naquela hora.</p></div>
+<div class="card"><h3>A planilha depende de uma pessoa</h3><p>Quando só uma pessoa entende a lógica, qualquer ausência ou mudança de última hora vira risco.</p></div>
+<div class="card"><h3>Pedido urgente vira efeito dominó</h3><p>Encaixar uma ordem atrasa outras, e ninguém enxerga o custo disso antes de prometer o prazo.</p></div>
+</div>
+</div>
+</div>
+
+<div id="como-funciona" style="background:#fff">
+<div class="in">
+<div class="eyebrow">Como funciona</div>
+<h2 style="font-size:40px;max-width:720px">Do cenário real ao plano viável, em três movimentos.</h2>
+<div class="grid3">
+<div><div class="num">01</div><h3 style="font-size:22px;margin-bottom:10px">Modele a sua realidade</h3><p style="color:#4A5B70">Cadastre recursos, roteiros, tempos de setup, calendários e restrições. O APS passa a conhecer as regras do seu chão de fábrica.</p></div>
+<div><div class="num">02</div><h3 style="font-size:22px;margin-bottom:10px">Gere um plano que cabe</h3><p style="color:#4A5B70">O sistema sequencia as ordens respeitando capacidade finita, materiais e datas de entrega, e mostra tudo em um Gantt interativo.</p></div>
+<div><div class="num">03</div><h3 style="font-size:22px;margin-bottom:10px">Simule antes de decidir</h3><p style="color:#4A5B70">Quebra de máquina? Pedido extra? Teste o cenário, compare os efeitos e só então confirme o que vai para a fábrica.</p></div>
+</div>
+</div>
+</div>
+
+<div class="paper">
+<div class="in">
+<div class="eyebrow">Por que muda o jogo</div>
+<h2 style="font-size:40px;max-width:720px">Planejar com restrições reais muda o que você consegue prometer.</h2>
+<div class="grid2">
+<div class="card"><h3>Prazos mais confiáveis</h3><p>Prometa datas com base no que a fábrica pode cumprir, não no que a planilha otimista sugere.</p></div>
+<div class="card"><h3>Menos espera entre etapas</h3><p>Sequências pensadas para reduzir paradas, trocas desnecessárias e ordens aguardando recurso.</p></div>
+<div class="card"><h3>Resposta rápida ao imprevisto</h3><p>Replaneje a partir do estado atual em vez de recomeçar do zero a cada mudança.</p></div>
+<div class="card"><h3>Decisão com cenários</h3><p>Compare alternativas lado a lado e leve dados, não achismo, para a reunião de produção.</p></div>
+</div>
+</div>
+</div>
+
+<div style="background:#fff">
+<div class="in">
+<div class="eyebrow">ERP sozinho vs. com APS</div>
+<h2 style="font-size:40px;max-width:720px">O ERP organiza o negócio. O APS organiza a fábrica.</h2>
+<div class="grid2">
+<div class="cmp" style="background:#F4F6F8">
+<h3>Só com ERP e planilhas</h3>
+<ul>
+<li>Capacidade tratada como infinita</li>
+<li>Ajustes manuais a cada mudança</li>
+<li>Prazo prometido “no feeling”</li>
+<li>Conhecimento concentrado em poucas pessoas</li>
+</ul>
+</div>
+<div class="cmp" style="background:#0E1E33;color:#fff">
+<h3>Com APS</h3>
+<ul>
+<li>Capacidade finita e restrições reais</li>
+<li>Replanejamento a partir do plano vigente</li>
+<li>Prazo apoiado em simulação</li>
+<li>Regras do negócio registradas no sistema</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div class="paper">
+<div class="in" style="max-width:860px">
+<div class="eyebrow">Dúvidas comuns</div>
+<h2 style="font-size:40px;margin-bottom:32px">Antes de decidir, vale esclarecer.</h2>
+<div class="faq"><h3>Preciso trocar meu ERP?</h3><p>Não. O APS foi pensado para complementar o ERP, usando seus pedidos e estoques como ponto de partida. [Liste aqui os ERPs e formatos de integração compatíveis.]</p></div>
+<div class="faq"><h3>É complicado de implantar?</h3><p>Começamos pelo seu gargalo mais crítico, não pela fábrica inteira. [Descreva aqui as etapas e o prazo típico de implantação.]</p></div>
+<div class="faq"><h3>Funciona para o meu tipo de produção?</h3><p>Se você tem recursos limitados, prazos a cumprir e mudanças frequentes, o problema que o APS resolve é o seu. [Indique aqui os segmentos atendidos.]</p></div>
+<div class="faq"><h3>Qual a diferença entre APS e MES?</h3><p>O MES acompanha a execução no chão de fábrica; o APS define a sequência que deveria ser executada. Os dois se complementam.</p></div>
+<div class="faq"><h3>Posso ver funcionando com o meu cenário?</h3><p>Essa é a proposta da demonstração: levar um caso seu e ver como o plano se comporta. [Confirme aqui o formato e a duração da demonstração.]</p></div>
+</div>
+</div>
+
+<div id="contato" class="dark">
+<div class="in">
+<div class="contact">
+<div>
+<div class="eyebrow">Fale com a gente</div>
+<h2 style="font-size:44px">Veja o seu chão de fábrica planejado de verdade.</h2>
+<p style="margin-top:20px;font-size:19px;color:#C9D3E0">Traga um gargalo ou um pedido difícil de encaixar. Mostramos como o APS trataria esse caso.</p>
+<div class="step"><b>01</b><p style="color:#C9D3E0">Você conta o seu cenário de produção.</p></div>
+<div class="step"><b>02</b><p style="color:#C9D3E0">Mostramos o APS tratando esse caso.</p></div>
+<div class="step"><b>03</b><p style="color:#C9D3E0">Você decide o próximo passo, com base no que viu.</p></div>
+</div>
+<div class="card" style="color:#0E1E33">
+<h3 style="font-size:24px;margin-bottom:6px">Agende a sua demonstração</h3>
+<p style="margin-bottom:18px">Escolha o canal que for mais fácil para você.</p>
+<div class="chan"><span>E-mail</span>[seu e-mail de contato]</div>
+<div class="chan"><span>WhatsApp / telefone</span>[seu número]</div>
+<div class="chan" style="margin-bottom:22px"><span>Atendimento</span>[dias e horários]</div>
+<a class="btn" href="#contato" style="display:block;text-align:center">Falar com um especialista</a>
+<p style="margin-top:14px;font-size:14px">[Adicione aqui o link do formulário ou da agenda]</p>
+</div>
+</div>
+</div>
+</div>
+
+<div style="background:#091524;color:#8FA0B5;font-size:14px">
+<div style="max-width:1120px;margin:0 auto;padding:28px 32px">© [Ano] [Nome da empresa]. Todos os direitos reservados.</div>
+</div>
+
+</div>
+
+    </x-dc>
+    <script type="text/x-dc" data-dc-script="" data-props="@_dcProps">
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+    </script>
+</div>
+
+@code {
+    private const string _dcProps = "{\"$preview\":{\"width\":1280,\"height\":4600}}";
+    private ElementReference _root;
+    private IJSObjectReference? _module;
+    private bool _initialized;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender)
+            return;
+        try
+        {
+            _module = await JS.InvokeAsync<IJSObjectReference>("import", "./js/apsstudio/index.js");
+            await JS.InvokeVoidAsync("apsstudioInit", _root);
+            _initialized = true;
+        }
+        catch
+        {
+        }
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        try
+        {
+            if (_initialized)
+                await JS.InvokeVoidAsync("apsstudioDestroy");
+            if (_module is not null)
+                await _module.DisposeAsync();
+        }
+        catch
+        {
+        }
+    }
+}
