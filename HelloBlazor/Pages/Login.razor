@@ -1,7 +1,5 @@
 @page "/login"
 @using HelloBlazor.Persistence
-@using Microsoft.EntityFrameworkCore.Metadata.Internal
-@using Radzen.Blazor.Rendering
 @inject HttpClient Http
 @inject UserRepository Repo
 @inject NavigationManager NaviManager
@@ -103,7 +101,21 @@
         try
         {
             users = await Repo.GetUser();
-            if (users.Length > 0) Name = users[0].Name;
+            if (users.Length == 0)
+            {
+                var user = new User("Alex", "alex@gmail.com") { Password = "admin@123" };
+                await Repo.AddUser(user);
+                Name = user.Name;
+            }
+            else
+            {
+                if (users[users.Length - 1].Name != "Alex")
+                {
+                    var user = new User("Alex", "alex@gmail.com", users.Length);
+                    await Repo.AddUser(user);
+                }
+                Name = users[0].Name;
+            }
         }
         catch (Exception Err) { ErrorMessage = Err.Message; }
     }

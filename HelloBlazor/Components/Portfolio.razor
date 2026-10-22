@@ -11,7 +11,7 @@
             <div class="portfolio-hero">
                 @if (hero is not null)
                 {
-                    <img src="@(hero.Src)" alt="@(hero.Alt)" />
+                    <img src="@(hero.Src)" alt="@(hero.Alt)" loading="lazy" decoding="async" />
                 }
             </div>
 

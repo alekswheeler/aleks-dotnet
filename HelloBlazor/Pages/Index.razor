@@ -1,13 +1,14 @@
 @page "/"
 @page "/wasm"
-@using HelloBlazor.Persistence
-@using Microsoft.EntityFrameworkCore
 
 @inject HttpClient Http
-@inject UserRepository Repo
 @inject HeroImageService HeroImageService
 
 <PageTitle>alekswheeler</PageTitle>
+
+<HeadContent>
+    <link rel="preload" as="image" href="images/motion-background.jpg" fetchpriority="high" />
+</HeadContent>
 
 <Header Http="@Http"/>
 @* <Home Http=@Http HeroImageService=@HeroImageService /> *@
@@ -21,37 +22,3 @@
         @Message
     }
 </p> *@
-
-
-
-@code {
-
-    string Message = "";
-    protected override async Task OnInitializedAsync()
-    {
-        User[] users;
-        User user;
-        try
-        {
-            users = await Repo.GetUser();
-            if (users.Length == 0)
-            {
-                user = new User("Alex", "alex@gmail.com");
-                user.Password = "admin@123";
-                await Repo.AddUser(user);
-            }
-            else
-            {
-                if (users[users.Length - 1].Name != "Alex")
-                {
-                    user = new User("Alex", "alex@gmail.com", users.Length);
-                    await Repo.AddUser(user);
-                }
-            }
-        }
-        catch (Exception Err)
-        {
-            Message = Err.Message;
-        }
-    }
-}

@@ -56,10 +56,4 @@ catch
     // Never let a bad culture white-screen the app: boot with defaults.
 }
 
-using (var scope = app.Services.CreateScope())
-{
-    var context = scope.ServiceProvider.GetRequiredService<DatabaseContext>();
-    context.Database.EnsureCreated();
-}
-
 await app.RunAsync();

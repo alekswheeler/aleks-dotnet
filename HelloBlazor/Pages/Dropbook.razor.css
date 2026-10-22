@@ -358,6 +358,40 @@
 .dropbook-page .cta-guarantee { font-family: 'Sorts Mill Goudy', serif; font-size: 1.25rem; font-style: italic; color: var(--celadon); line-height: 1.5; }
 .dropbook-page .cta-scarcity { display: inline-block; font-family: 'Jura', sans-serif; font-size: .9rem; font-weight: 600; letter-spacing: .04em; color: var(--white); background-color: rgba(46,26,71,.35); border: 1px solid rgba(172,225,175,.4); border-radius: 999px; padding: .45rem 1.25rem; margin-bottom: 1.5rem; }
 .dropbook-page .cta-trust { font-size: .85rem; color: var(--cool-steel); opacity: .9; margin-bottom: 1.5rem; }
+.dropbook-page .cta-offer {
+            position: relative; overflow: hidden; text-align: left;
+            background-color: rgba(46,26,71,.35); border: 1px solid rgba(172,225,175,.35);
+            border-radius: 16px; padding: clamp(1.5rem,3vw,2.25rem) clamp(1.25rem,3vw,2.5rem);
+            margin-bottom: 1.75rem;
+        }
+.dropbook-page .cta-offer::before {
+            content: ''; position: absolute; inset: 0; opacity: 0; transition: opacity .25s ease;
+            background: radial-gradient(300px circle at var(--mx,50%) var(--my,50%), rgba(172,225,175,.18), transparent 70%);
+        }
+.dropbook-page .cta-offer:hover::before { opacity: 1; }
+.dropbook-page .cta-offer-badge {
+            display: inline-block; font-family: 'Jura', sans-serif; font-size: .85rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: .08em; color: var(--celadon);
+            background-color: rgba(172,225,175,.1); border: 1px solid rgba(172,225,175,.35);
+            border-radius: 999px; padding: .4rem 1.1rem; margin-bottom: 1.25rem;
+        }
+.dropbook-page .cta-offer-title {
+            font-family: 'Jura', sans-serif; font-size: clamp(1.35rem,2.5vw,1.6rem); font-weight: 700;
+            color: var(--white); line-height: 1.25; margin-bottom: 1.25rem;
+        }
+.dropbook-page .cta-offer-list { list-style: none; display: flex; flex-direction: column; gap: .875rem; }
+.dropbook-page .cta-offer-list li { display: flex; align-items: flex-start; gap: .75rem; font-size: 1rem; color: var(--cool-steel); line-height: 1.5; }
+.dropbook-page .cta-offer-icon {
+            flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%;
+            background-color: var(--celadon); color: var(--black);
+            display: flex; align-items: center; justify-content: center;
+            font-size: .85rem; font-weight: 700; margin-top: 2px;
+        }
+.dropbook-page .cta-offer-note {
+            font-family: 'Sorts Mill Goudy', serif; font-size: 1.05rem; font-style: italic;
+            color: var(--celadon); line-height: 1.5; margin-top: 1.25rem; padding-top: 1.25rem;
+            border-top: 1px solid rgba(172,225,175,.25);
+        }
 /* ===== footer ===== */
 .dropbook-page .footer { background-color: var(--coffee-bean); padding: 2.5rem clamp(1.5rem,5vw,4rem); }
 .dropbook-page .footer-inner { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; }

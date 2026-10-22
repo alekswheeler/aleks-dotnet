@@ -14,9 +14,24 @@ namespace HelloBlazor.Persistence
             _factory = factory;
         }
 
+        private async Task<DatabaseContext> CreateDbContextAsync()
+        {
+            var context = await _factory.CreateDbContextAsync();
+            try
+            {
+                await context.Database.EnsureCreatedAsync();
+                return context;
+            }
+            catch
+            {
+                await context.DisposeAsync();
+                throw;
+            }
+        }
+
         public async Task AddUser(User user)
         {
-            using var context = await _factory.CreateDbContextAsync();
+            using var context = await CreateDbContextAsync();
             context.Add(user);
             await context.SaveChangesAsync();
         }
@@ -42,7 +57,7 @@ namespace HelloBlazor.Persistence
             DatabaseContext dbContext;
             try
             {
-                dbContext = await _factory.CreateDbContextAsync();
+                dbContext = await CreateDbContextAsync();
                 retValue = [.. dbContext.Users.AsNoTracking()];
             }
             catch (Exception Err) { Console.Write(Err.Message); }

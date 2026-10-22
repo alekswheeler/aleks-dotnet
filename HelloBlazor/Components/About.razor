@@ -1,7 +1,7 @@
 <section class="light" id="about">
     @if (hero is not null)
     {
-        <img class="background" src="@(hero.Src)" alt="@(hero.Alt)" />
+        <img class="background" src="@(hero.Src)" alt="@(hero.Alt)" fetchpriority="high" />
     }
     <h2>@L["About_Title"]</h2>
     <div class="teste" style="background-color: white; padding: 4rem; margin: 3rem auto; text-align: center;">
