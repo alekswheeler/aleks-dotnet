@@ -1,123 +1,210 @@
-/* Software APS landing - DC runtime (React) - carregador SPA-safe.
- * Exposes:
- *   window.apsstudioInit(rootElement)  - loads React, ReactDOM and the aps-app runtime in order,
- *                                        then the runtime auto-boots: replaces <x-dc> with #dc-root
- *                                        and mounts the landing template.
- *   window.apsstudioDestroy()          - unmounts the captured React root, removes the 3 scripts
- *                                        and the styles injected by the runtime.
- * The react-dom.createRoot API is wrapped before the runtime loads so the mount handle is
- * captured for a clean unmount; the original reference is restored right after boot.
- */
-(function () {
-    var state = null;
+const svgNamespace = "http://www.w3.org/2000/svg";
+const pageStates = new WeakMap();
 
-    function loadScript(src) {
-        return new Promise(function (resolve, reject) {
-            var s = document.createElement('script');
-            s.src = src;
-            s.async = false;
-            s.onload = function () { resolve(s); };
-            s.onerror = function () {
-                if (s.parentNode) s.parentNode.removeChild(s);
-                reject(new Error('[apsstudio] falha ao carregar ' + src));
-            };
-            document.head.appendChild(s);
-        });
+const resources = [
+    { name: "Prensa A", y: 60 },
+    { name: "Torno CNC", y: 111 },
+    { name: "Embalagem", y: 162 }
+];
+
+const grid = { x: 112, width: 443 };
+const hour = value => grid.x + value / 10 * grid.width;
+
+const schedules = {
+    base: [
+        { resource: 0, start: 0, end: 3, id: "OP-104", locked: true },
+        { resource: 0, start: 3.5, end: 6.5, id: "OP-208" },
+        { resource: 1, start: .4, end: 2.9, id: "OP-322" },
+        { resource: 1, start: 6.5, end: 7.8, id: "OP-208" },
+        { resource: 2, start: 3.1, end: 5.1, id: "OP-541" }
+    ],
+    urgent: [
+        { resource: 0, start: 0, end: 3, id: "OP-104", locked: true },
+        { resource: 0, start: 3.5, end: 6.5, id: "OP-208" },
+        { resource: 1, start: .4, end: 2.9, id: "OP-322" },
+        { resource: 1, start: 6.5, end: 7.8, id: "OP-208" },
+        { resource: 2, start: 3.1, end: 5.1, id: "OP-541" },
+        { resource: 0, start: 1.8, end: 4, id: "URGENTE", urgent: true, request: true }
+    ],
+    repaired: [
+        { resource: 0, start: 0, end: 3, id: "OP-104", locked: true },
+        { resource: 0, start: 3.25, end: 5.25, id: "URGENTE", urgent: true },
+        { resource: 0, start: 5.5, end: 8.5, id: "OP-208", moved: true },
+        { resource: 1, start: .4, end: 2.9, id: "OP-322" },
+        { resource: 1, start: 8.5, end: 9.8, id: "OP-208", moved: true },
+        { resource: 2, start: 3.1, end: 5.1, id: "OP-541" }
+    ]
+};
+
+const messages = {
+    base: "O plano contém uma operação firmada. Ela será preservada ao avaliar a nova demanda.",
+    urgent: "A nova demanda ainda aguarda encaixe. A janela solicitada coincide com o compromisso protegido.",
+    repaired: "Nesta proposta ilustrativa, a operação firmada é preservada e duas operações são reorganizadas para encaixar a nova demanda."
+};
+
+function createSvgElement(name, attributes = {}, text = "") {
+    const element = document.createElementNS(svgNamespace, name);
+    for (const [key, value] of Object.entries(attributes)) {
+        element.setAttribute(key, String(value));
     }
+    if (text) element.textContent = text;
+    return element;
+}
 
-    function removeStylesByFragment(fragment) {
-        var nodes = [];
-        try {
-            nodes = Array.prototype.slice.call(document.head.querySelectorAll('style'));
-        } catch (e) {
-            nodes = [];
-        }
-        nodes.forEach(function (n) {
-            var text = n.textContent || (n.firstChild && n.firstChild.nodeValue) || '';
-            if (text.indexOf(fragment) !== -1 && n.parentNode) {
-                n.parentNode.removeChild(n);
-            }
-        });
-    }
+function renderSchedule(root, step) {
+    const svg = root.querySelector("#schedule");
+    if (!svg || !schedules[step]) return;
 
-    function collectRuntimeStyles() {
-        var found = [];
-        try {
-            Array.prototype.slice.call(document.head.querySelectorAll('style')).forEach(function (n) {
-                var text = n.textContent || '';
-                if (text.indexOf('x-dc{display:none!important}') !== -1 ||
-                    text.indexOf('sc-placeholder') !== -1) {
-                    found.push(n);
-                }
-            });
-        } catch (e) { }
-        return found;
-    }
-
-    function destroy() {
-        if (!state) return;
-        var s = state;
-        state = null;
-        if (s.prevCreateRoot && window.ReactDOM) {
-            try { window.ReactDOM.createRoot = s.prevCreateRoot; } catch (e) { }
-        }
-        s.roots.forEach(function (r) {
-            try {
-                if (r.unmount) r.unmount();
-                else if (r.container) {
-                    while (r.container.firstChild) r.container.removeChild(r.container.firstChild);
-                }
-            } catch (e) { }
-        });
-        s.scripts.forEach(function (n) {
-            try { if (n && n.parentNode) n.parentNode.removeChild(n); } catch (e) { }
-        });
-        s.styles.forEach(function (n) {
-            try { if (n && n.parentNode) n.parentNode.removeChild(n); } catch (e) { }
-        });
-    }
-
-    async function init(rootEl) {
-        if (state) destroy();
-
-        var st = { scripts: [], roots: [], styles: [], prevCreateRoot: null };
-        state = st;
-
-        try {
-            var react = await loadScript('./js/apsstudio/react.production.min.js');
-            st.scripts.push(react);
-
-            var reactDom = await loadScript('./js/apsstudio/react-dom.production.min.js');
-            st.scripts.push(reactDom);
-
-            var dom = window.ReactDOM;
-            if (dom && typeof dom.createRoot === 'function') {
-                var prev = dom.createRoot;
-                st.prevCreateRoot = prev;
-                dom.createRoot = function () {
-                    var root = prev.apply(dom, arguments);
-                    st.roots.push(root);
-                    return root;
-                };
-            }
-
-            var app = await loadScript('./js/apsstudio/aps-app.js');
-            st.scripts.push(app);
-
-            if (st.prevCreateRoot && dom && dom.createRoot !== prev) {
-                dom.createRoot = prev;
-                st.prevCreateRoot = null;
-            }
-
-            st.styles = collectRuntimeStyles();
-
-            return rootEl;
-        } catch (err) {
-            destroy();
-            throw err;
+    for (const child of [...svg.children]) {
+        if (child.tagName.toLowerCase() !== "title" && child.tagName.toLowerCase() !== "desc") {
+            child.remove();
         }
     }
 
-    window.apsstudioInit = init;
-    window.apsstudioDestroy = destroy;
-})();
+    for (let value = 0; value <= 10; value += 2) {
+        const x = hour(value);
+        svg.appendChild(createSvgElement("line", { x1: x, y1: 40, x2: x, y2: 200, class: "grid-line" }));
+        svg.appendChild(createSvgElement("text", {
+            x,
+            y: 27,
+            fill: "#8494a3",
+            "font-size": 10,
+            "text-anchor": value === 10 ? "end" : "start"
+        }, `${String(8 + value).padStart(2, "0")}:00`));
+    }
+
+    for (const resource of resources) {
+        svg.appendChild(createSvgElement("text", { x: 5, y: resource.y + 20, fill: "#5b7184", "font-size": 11 }, resource.name));
+        svg.appendChild(createSvgElement("rect", { x: grid.x, y: resource.y, width: grid.width, height: 32, rx: 5, fill: "#f0f4f7" }));
+    }
+
+    for (const operation of schedules[step]) {
+        const y = resources[operation.resource].y + (operation.request ? 33 : 3);
+        const x = hour(operation.start);
+        const width = hour(operation.end) - x;
+        const fill = operation.urgent ? "#ff8a24" : operation.locked ? "#284b69" : "#7ea5c2";
+        const group = createSvgElement("g", {
+            "data-operation": operation.id,
+            "data-locked": operation.locked ? "true" : "false",
+            "data-start": operation.start,
+            "data-end": operation.end
+        });
+        const rectAttributes = {
+            x,
+            y,
+            width,
+            height: operation.request ? 15 : 26,
+            rx: 4,
+            fill: operation.request ? "#fff1e3" : fill
+        };
+
+        if (operation.request) Object.assign(rectAttributes, { stroke: "#e49a50", "stroke-width": 1, "stroke-dasharray": "4 3" });
+        if (operation.moved) Object.assign(rectAttributes, { stroke: "#087e8b", "stroke-width": 1.5 });
+        group.appendChild(createSvgElement("rect", rectAttributes));
+        group.appendChild(createSvgElement("text", {
+            x: x + 7,
+            y: y + (operation.request ? 12 : 17),
+            fill: operation.request ? "#9b622c" : operation.urgent ? "#10253b" : "#fff",
+            "font-size": operation.request ? 8 : 9,
+            "font-weight": operation.locked ? 700 : 600
+        }, operation.id + (operation.locked ? "  ◆" : "")));
+
+        const description = operation.request
+            ? "Janela desejada: solicitação ainda não programada"
+            : operation.id + (operation.locked ? " · operação firmada, preservada" : operation.moved ? " · alterada nesta proposta" : "");
+        group.appendChild(createSvgElement("title", {}, description));
+        svg.appendChild(group);
+    }
+
+    if (step === "urgent") {
+        svg.appendChild(createSvgElement("text", { x: hour(4.2), y: resources[0].y + 48, fill: "#a76b33", "font-size": 8 }, "Solicitação aguardando janela"));
+    }
+
+    const status = root.querySelector("#scheduleStatus");
+    const message = root.querySelector("#scheduleMessage");
+    const metric = root.querySelector("#changeMetric");
+    const label = root.querySelector("#changeLabel");
+    if (status) status.dataset.state = step;
+    if (message) message.textContent = messages[step];
+    if (metric) metric.textContent = step === "repaired" ? "2" : step === "urgent" ? "1" : "0";
+    if (label) label.textContent = step === "urgent" ? "demanda aguardando encaixe" : "alterações propostas";
+
+    for (const button of root.querySelectorAll("[data-step]")) {
+        button.setAttribute("aria-pressed", String(button.dataset.step === step));
+    }
+}
+
+export function init(root) {
+    if (!root) return;
+    destroy(root);
+
+    const controller = new AbortController();
+    const { signal } = controller;
+    const menuToggle = root.querySelector("#menuToggle");
+    const navigation = root.querySelector("#navigation");
+    const closeMenu = () => {
+        if (!menuToggle || !navigation) return;
+        navigation.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Abrir navegação");
+    };
+
+    root.querySelectorAll("[data-step]").forEach(button => {
+        button.addEventListener("click", () => renderSchedule(root, button.dataset.step), { signal });
+    });
+    renderSchedule(root, "base");
+
+    if (menuToggle && navigation) {
+        menuToggle.addEventListener("click", () => {
+            const isOpen = navigation.classList.toggle("open");
+            menuToggle.setAttribute("aria-expanded", String(isOpen));
+            menuToggle.setAttribute("aria-label", isOpen ? "Fechar navegação" : "Abrir navegação");
+        }, { signal });
+
+        navigation.querySelectorAll("a").forEach(link => link.addEventListener("click", closeMenu, { signal }));
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape" && navigation.classList.contains("open")) {
+                closeMenu();
+                menuToggle.focus();
+            }
+        }, { signal });
+    }
+
+    const form = root.querySelector("#demoForm");
+    if (form) {
+        form.addEventListener("submit", event => {
+            event.preventDefault();
+            if (!form.reportValidity()) return;
+
+            const name = root.querySelector("#leadName").value.trim();
+            const company = root.querySelector("#leadCompany").value.trim();
+            const email = root.querySelector("#leadEmail").value.trim();
+            const challenge = root.querySelector("#leadChallenge").value.trim();
+            const body = [
+                "Olá, gostaria de conversar sobre uma demonstração do APS Studio.",
+                "",
+                `Nome: ${name}`,
+                `Empresa: ${company}`,
+                `E-mail de contato: ${email}`,
+                "",
+                "Principal desafio:",
+                challenge || "Gostaria de explicar o contexto na conversa."
+            ].join("\n");
+            const mailLink = document.createElement("a");
+            mailLink.href = `mailto:mttursini@gmail.com?subject=${encodeURIComponent(`Demonstração APS Studio — ${company}`)}&body=${encodeURIComponent(body)}`;
+            mailLink.click();
+
+            const status = root.querySelector("#formStatus");
+            if (status) status.textContent = "Mensagem preparada. Revise e conclua o envio no seu programa de e-mail.";
+        }, { signal });
+    }
+
+    pageStates.set(root, controller);
+}
+
+export function destroy(root) {
+    const controller = root && pageStates.get(root);
+    if (!controller) return;
+    controller.abort();
+    pageStates.delete(root);
+}
